@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-deep font-body antialiased;
+}
+
+/* Foco visible para accesibilidad de teclado */
+:focus-visible {
+  outline: 2px solid #7C5CFC;
+  outline-offset: 3px;
+}
+
+/* Mantiene los bordes nítidos del pixel art al escalar la imagen */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Pixelify Sans a 8-10px necesita algo de peso para no verse débil en
+   las etiquetas .font-label — Press Start 2P siempre se veía "bold"
+   porque es bitmap; esto compensa esa diferencia por defecto. */
+@layer base {
+  .font-label {
+    font-weight: 600;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  @page {
+    margin: 1.2cm;
+  }
+  .printable {
+    width: 100%;
+  }
+  .answer-key-page {
+    break-before: page;
+  }
+}
