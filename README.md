@@ -1,139 +1,118 @@
 <p align="center">
-  <img src="./public/banner-github.png" alt="Banner Auri Kosmos" width="100%">
+  <img src="./public/banner-github.png" alt="Auri Kosmos Banner" width="100%">
 </p>
 
-# 🌌 Auri Kosmos
+<h1 align="center">✨ Auri Kosmos</h1>
 
-### Donde las ideas encuentran su universo.
-<p>
-Una plataforma donde la tecnología, la creatividad y el aprendizaje se unen para crear experiencias que inspiran.
+<p align="center">
+<b>Explorando nuevas formas de enseñar.</b>
 </p>
 
-<br>
-
-[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-
-<br><br>
-
-🌐 **Sitio web**
-
-https://aurikosmos.github.io/aurikosmos/
-
-</div>
+<p align="center">
+Una plataforma donde la creatividad, la tecnología y la educación se encuentran para construir experiencias de aprendizaje diferentes.
+</p>
 
 ---
 
-# ✨ ¿Qué es Auri Kosmos?
+## 👋 Hola, soy Auri
 
-Auri Kosmos es un espacio donde la educación, la creatividad y la tecnología convergen para construir herramientas, recursos y experiencias digitales que fomentan el aprendizaje de una forma diferente.
+<p align="center">
+<img src="./public/auri-hablando.png" width="220">
+</p>
 
-No es solo un sitio web; es el inicio de un universo en constante crecimiento.
+Soy un pequeño pingüino astronauta que viaja por el Kosmos buscando nuevas formas de ayudar a docentes y estudiantes.
 
----
-
-# 🚀 Tecnologías
-
-| Tecnología | Propósito |
-|------------|-----------|
-| ⚛️ React | Construcción de interfaces |
-| ⚡ Vite | Desarrollo rápido |
-| 🎨 Tailwind CSS | Sistema de estilos |
-| 🐙 Git & GitHub | Control de versiones |
-| 🚀 GitHub Pages | Despliegue |
+Mi misión es convertir ideas en herramientas que hagan el aprendizaje más creativo, divertido y significativo.
 
 ---
 
-# 🌌 Explora el universo
+# 🚀 ¿Qué es Auri Kosmos?
 
-## 🏠 Inicio
-La puerta de entrada al proyecto y a la filosofía de Auri Kosmos.
+Auri Kosmos es un ecosistema educativo en construcción.
 
-## 🧪 Laboratorio
-Espacio dedicado a herramientas y recursos interactivos para aprender creando.
+Aquí desarrollamos proyectos que combinan:
 
-## 🔭 Observatorio
-Ideas, recursos y proyectos enfocados en educación y creatividad.
+- 🎨 Diseño
+- 💻 Desarrollo Web
+- 🤖 Inteligencia Artificial
+- 📚 Recursos para docentes
+- 🎮 Gamificación
+- 🌎 Tecnología educativa
 
-## 🎨 Design System
-Componentes reutilizables que mantienen una identidad visual consistente.
-
----
-
-# 📂 Estructura del proyecto
-
-```text
-auri-kosmos/
-│
-├── public/
-├── src/
-│   ├── app/
-│   ├── components/
-│   ├── features/
-│   └── config/
-│
-├── package.json
-├── vite.config.js
-└── README.md
-```
+Cada proyecto es un nuevo planeta dentro del Kosmos.
 
 ---
 
-# 💻 Instalación
+# 🌌 Universo Auri
 
-Clona el repositorio:
+<p align="center">
 
-```bash
-git clone git@github.com:AuriKosmos/aurikosmos.git
-```
+<img src="./public/auri-procesando.png" width="180">
 
-Instala las dependencias:
+<img src="./public/auri-celebrando.png" width="180">
 
-```bash
-npm install
-```
+</p>
 
-Inicia el proyecto:
+Cada versión de Auri representa un momento distinto del viaje.
 
-```bash
-npm run dev
-```
+🛰️ Explorando
 
-Genera la versión de producción:
+💡 Creando
 
-```bash
-npm run build
-```
+🎉 Celebrando
 
 ---
 
-# 🛣️ Roadmap
+# 🛠️ Tecnologías
 
-- ✅ Landing page
-- ✅ Sistema de componentes Pixel UI
-- ✅ GitHub Pages
-- 🔄 Recursos interactivos
+<p align="center">
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite)
+
+![Tailwind](https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css)
+
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github)
+
+</p>
+
+---
+
+# 🎯 Estado del proyecto
+
+🟢 En desarrollo.
+
+Actualmente estamos construyendo la identidad visual, la landing principal y las primeras herramientas educativas.
+
+---
+
+# 📌 Próximas misiones
+
+- ✅ Landing Page
 - 🔄 Blog
-- 🔄 Comunidad
-- 🔄 Plataforma educativa
+- 🔄 Recursos educativos
+- 🔄 Biblioteca de herramientas
+- 🔄 Plataforma para docentes
+- 🔄 IA educativa
 
 ---
 
 # 💜 Filosofía
 
-> *"Creemos que aprender puede ser una experiencia tan emocionante como explorar un nuevo universo."*
+> Aprender también puede sentirse como explorar un universo.
 
-Cada proyecto busca despertar la curiosidad, fomentar la creatividad y acercar la tecnología de una manera accesible y significativa.
+No buscamos hacer otra página web.
+
+Queremos construir un lugar donde enseñar vuelva a ser emocionante.
 
 ---
 
-<div align="center">
+<p align="center">
+<img src="./public/favicon.png" width="70">
 
-### ⭐ Gracias por visitar este proyecto
+### Auri Kosmos
 
-Si te gusta Auri Kosmos, considera darle una ⭐ al repositorio.
+*Crea • Enseña • Aprende*
 
-Hecho con 💜 por **Auri Kosmos**
-
-</div>
+</p>
