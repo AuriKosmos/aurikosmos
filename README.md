@@ -2,141 +2,112 @@
 
 # 🌌 Auri Kosmos
 
-<img src="public/auri-hablando.png" width="180" alt="Auri">
+### *Donde las ideas encuentran su universo.*
 
-### ✨ Donde las ideas encuentran su universo.
+🐧 Creador de experiencias digitales que combinan tecnología, creatividad y aprendizaje.
 
-Una plataforma educativa y creativa diseñada para transformar el aprendizaje mediante tecnología, diseño y experiencias interactivas.
+<br>
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-181717?logo=github&logoColor=white)](https://pages.github.com/)
-
----
-
-### 💜 Bienvenido al universo de Auri
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-181717?style=for-the-badge&logo=github)](https://pages.github.com)
 
 </div>
 
-## 🌠 Nuestra visión
+---
 
-En Auri Kosmos creemos que aprender no debe sentirse como una obligación.
+# 👋 Hola
 
-Queremos construir experiencias donde la educación, la creatividad y la tecnología trabajen juntas para despertar la curiosidad de cada persona.
+Soy **Auri Kosmos**.
 
-Cada proyecto que nace aquí busca acercar el conocimiento de una forma más humana, visual e interactiva.
+Estoy construyendo un universo donde la educación, la creatividad y la tecnología trabajan juntas para crear experiencias memorables.
+
+Aquí encontrarás proyectos desarrollados con una visión centrada en el aprendizaje, el diseño y la innovación.
 
 ---
 
-# 🚀 ¿Qué encontrarás?
+# 🚀 Actualmente
 
-✨ Recursos educativos
+🌌 Desarrollando la web oficial de **Auri Kosmos**
 
-🎲 Laboratorios interactivos
+🎨 Construyendo un sistema de diseño propio
 
-🧩 Juegos didácticos
+🤖 Explorando Inteligencia Artificial aplicada a la educación
 
-📚 Herramientas para docentes
-
-🌌 Experiencias digitales
-
----
-
-# 📸 Vista previa
-
-> Próximamente se añadirá una captura del sitio.
+📚 Creando recursos educativos interactivos
 
 ---
 
 # 🛠 Tecnologías
 
-| Tecnología | Uso |
-|------------|-----|
-| ⚛ React | Interfaz |
-| ⚡ Vite | Empaquetador |
-| 🎨 Tailwind CSS | Diseño |
-| 🐙 GitHub | Control de versiones |
-| 🚀 GitHub Pages | Despliegue |
+```text
+💜 Frontend
+│
+├── React
+├── Vite
+├── Tailwind CSS
+├── JavaScript
+└── HTML + CSS
+
+⚙ Herramientas
+
+├── Git
+├── GitHub
+├── VS Code
+└── Figma
+```
 
 ---
 
-# 📂 Estructura
+# 🌠 Filosofía
+
+> **La tecnología es más poderosa cuando despierta curiosidad.**
+
+Cada proyecto nace con una pregunta.
+
+Cada línea de código busca acercar el conocimiento de una forma más humana.
+
+---
+
+# 🌌 Universo Auri
 
 ```text
-auri-kosmos/
-│
-├── public/
-├── src/
-├── package.json
-├── vite.config.js
-└── README.md
+           ✨
+            │
+   Educación ───── Diseño
+        ╲           ╱
+         ╲         ╱
+      Tecnología
+             │
+       Auri Kosmos 🐧
 ```
 
 ---
 
-# 💻 Desarrollo
+# 📈 Próximos proyectos
 
-Instalar dependencias
-
-```bash
-npm install
-```
-
-Iniciar servidor
-
-```bash
-npm run dev
-```
-
-Crear versión de producción
-
-```bash
-npm run build
-```
-
----
-
-# 🛣 Roadmap
-
-- ✅ Landing Page
-- ✅ Sistema de componentes Pixel UI
-- 🔄 Laboratorio interactivo
-- 🔄 Observatorio educativo
-- 🔄 Recursos descargables
-- 🔄 Comunidad
-- 🔄 Plataforma educativa completa
+- 🚀 Plataforma educativa
+- 🌍 Blog
+- 📚 Biblioteca digital
+- 🤖 IA educativa
+- 🎨 Recursos descargables
+- 💜 Comunidad
 
 ---
 
 # 🌎 Sitio Web
 
-Cuando GitHub Pages termine de publicarse:
-
-**https://aurikosmos.github.io/aurikosmos/**
-
----
-
-# 💜 Filosofía
-
-> *"Toda gran aventura comienza con una pregunta."*
-
-Auri no es solamente una mascota.
-
-Es la guía que acompaña cada exploración dentro de este universo.
+👉 https://aurikosmos.github.io/aurikosmos/
 
 ---
 
 <div align="center">
 
-## ⭐ Si este proyecto te gustó...
+### ⭐ Gracias por visitar mi perfil
 
-¡No olvides darle una estrella al repositorio!
+*"Todo gran universo comienza con una pequeña idea."*
 
-<img src="public/auri-celebrando.png" width="140">
-
----
-
-Hecho con 💜 por **Auri Kosmos**
+💜
 
 </div>
