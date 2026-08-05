@@ -2,112 +2,137 @@
 
 # 🌌 Auri Kosmos
 
-### *Donde las ideas encuentran su universo.*
+### Donde las ideas encuentran su universo.
 
-🐧 Creador de experiencias digitales que combinan tecnología, creatividad y aprendizaje.
+<p>
+Una plataforma donde la tecnología, la creatividad y el aprendizaje se unen para crear experiencias que inspiran.
+</p>
 
 <br>
 
 [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-181717?style=for-the-badge&logo=github)](https://pages.github.com)
+
+<br><br>
+
+🌐 **Sitio web**
+
+https://aurikosmos.github.io/aurikosmos/
 
 </div>
 
 ---
 
-# 👋 Hola
+# ✨ ¿Qué es Auri Kosmos?
 
-Soy **Auri Kosmos**.
+Auri Kosmos es un espacio donde la educación, la creatividad y la tecnología convergen para construir herramientas, recursos y experiencias digitales que fomentan el aprendizaje de una forma diferente.
 
-Estoy construyendo un universo donde la educación, la creatividad y la tecnología trabajan juntas para crear experiencias memorables.
-
-Aquí encontrarás proyectos desarrollados con una visión centrada en el aprendizaje, el diseño y la innovación.
+No es solo un sitio web; es el inicio de un universo en constante crecimiento.
 
 ---
 
-# 🚀 Actualmente
+# 🚀 Tecnologías
 
-🌌 Desarrollando la web oficial de **Auri Kosmos**
-
-🎨 Construyendo un sistema de diseño propio
-
-🤖 Explorando Inteligencia Artificial aplicada a la educación
-
-📚 Creando recursos educativos interactivos
+| Tecnología | Propósito |
+|------------|-----------|
+| ⚛️ React | Construcción de interfaces |
+| ⚡ Vite | Desarrollo rápido |
+| 🎨 Tailwind CSS | Sistema de estilos |
+| 🐙 Git & GitHub | Control de versiones |
+| 🚀 GitHub Pages | Despliegue |
 
 ---
 
-# 🛠 Tecnologías
+# 🌌 Explora el universo
+
+## 🏠 Inicio
+La puerta de entrada al proyecto y a la filosofía de Auri Kosmos.
+
+## 🧪 Laboratorio
+Espacio dedicado a herramientas y recursos interactivos para aprender creando.
+
+## 🔭 Observatorio
+Ideas, recursos y proyectos enfocados en educación y creatividad.
+
+## 🎨 Design System
+Componentes reutilizables que mantienen una identidad visual consistente.
+
+---
+
+# 📂 Estructura del proyecto
 
 ```text
-💜 Frontend
+auri-kosmos/
 │
-├── React
-├── Vite
-├── Tailwind CSS
-├── JavaScript
-└── HTML + CSS
-
-⚙ Herramientas
-
-├── Git
-├── GitHub
-├── VS Code
-└── Figma
+├── public/
+├── src/
+│   ├── app/
+│   ├── components/
+│   ├── features/
+│   └── config/
+│
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
 ---
 
-# 🌠 Filosofía
+# 💻 Instalación
 
-> **La tecnología es más poderosa cuando despierta curiosidad.**
+Clona el repositorio:
 
-Cada proyecto nace con una pregunta.
+```bash
+git clone git@github.com:AuriKosmos/aurikosmos.git
+```
 
-Cada línea de código busca acercar el conocimiento de una forma más humana.
+Instala las dependencias:
 
----
+```bash
+npm install
+```
 
-# 🌌 Universo Auri
+Inicia el proyecto:
 
-```text
-           ✨
-            │
-   Educación ───── Diseño
-        ╲           ╱
-         ╲         ╱
-      Tecnología
-             │
-       Auri Kosmos 🐧
+```bash
+npm run dev
+```
+
+Genera la versión de producción:
+
+```bash
+npm run build
 ```
 
 ---
 
-# 📈 Próximos proyectos
+# 🛣️ Roadmap
 
-- 🚀 Plataforma educativa
-- 🌍 Blog
-- 📚 Biblioteca digital
-- 🤖 IA educativa
-- 🎨 Recursos descargables
-- 💜 Comunidad
+- ✅ Landing page
+- ✅ Sistema de componentes Pixel UI
+- ✅ GitHub Pages
+- 🔄 Recursos interactivos
+- 🔄 Blog
+- 🔄 Comunidad
+- 🔄 Plataforma educativa
 
 ---
 
-# 🌎 Sitio Web
+# 💜 Filosofía
 
-👉 https://aurikosmos.github.io/aurikosmos/
+> *"Creemos que aprender puede ser una experiencia tan emocionante como explorar un nuevo universo."*
+
+Cada proyecto busca despertar la curiosidad, fomentar la creatividad y acercar la tecnología de una manera accesible y significativa.
 
 ---
 
 <div align="center">
 
-### ⭐ Gracias por visitar mi perfil
+### ⭐ Gracias por visitar este proyecto
 
-*"Todo gran universo comienza con una pequeña idea."*
+Si te gusta Auri Kosmos, considera darle una ⭐ al repositorio.
 
-💜
+Hecho con 💜 por **Auri Kosmos**
 
 </div>
