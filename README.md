@@ -1,9 +1,10 @@
-<div align="center">
+<p align="center">
+  <img src="./public/banner-github.png" alt="Banner Auri Kosmos" width="100%">
+</p>
 
 # 🌌 Auri Kosmos
 
 ### Donde las ideas encuentran su universo.
-
 <p>
 Una plataforma donde la tecnología, la creatividad y el aprendizaje se unen para crear experiencias que inspiran.
 </p>
