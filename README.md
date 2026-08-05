@@ -1,90 +1,73 @@
+<div align="center">
+
 # 🌌 Auri Kosmos
 
-> Donde la tecnología, la creatividad y el conocimiento se encuentran.
+<img src="public/auri-hablando.png" width="180" alt="Auri">
 
-Sitio web oficial de **Auri Kosmos**, desarrollado con **React**, **Vite** y **Tailwind CSS**.
+### ✨ Donde las ideas encuentran su universo.
 
----
+Una plataforma educativa y creativa diseñada para transformar el aprendizaje mediante tecnología, diseño y experiencias interactivas.
 
-## 🚀 Tecnologías
-
-- React
-- Vite
-- Tailwind CSS
-- Git & GitHub
-- GitHub Pages
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-181717?logo=github&logoColor=white)](https://pages.github.com/)
 
 ---
 
-## 📦 Instalación
+### 💜 Bienvenido al universo de Auri
 
-Clona el repositorio:
+</div>
 
-```bash
-git clone git@github.com:AuriKosmos/aurikosmos.git
-```
+## 🌠 Nuestra visión
 
-Ingresa al proyecto:
+En Auri Kosmos creemos que aprender no debe sentirse como una obligación.
 
-```bash
-cd auri-kosmos
-```
+Queremos construir experiencias donde la educación, la creatividad y la tecnología trabajen juntas para despertar la curiosidad de cada persona.
 
-Instala las dependencias:
-
-```bash
-npm install
-```
+Cada proyecto que nace aquí busca acercar el conocimiento de una forma más humana, visual e interactiva.
 
 ---
 
-## 💻 Ejecutar en modo desarrollo
+# 🚀 ¿Qué encontrarás?
 
-```bash
-npm run dev
-```
+✨ Recursos educativos
 
-La aplicación estará disponible en:
+🎲 Laboratorios interactivos
 
-```
-http://localhost:5173
-```
+🧩 Juegos didácticos
 
----
+📚 Herramientas para docentes
 
-## 🏗️ Compilar para producción
-
-```bash
-npm run build
-```
-
-La versión optimizada se genera dentro de la carpeta:
-
-```
-dist/
-```
+🌌 Experiencias digitales
 
 ---
 
-## 🌍 Despliegue
+# 📸 Vista previa
 
-El proyecto se publica automáticamente mediante **GitHub Actions** cada vez que se hace un `push` a la rama **main**.
-
-No es necesario ejecutar comandos adicionales para publicar.
+> Próximamente se añadirá una captura del sitio.
 
 ---
 
-## 📁 Estructura del proyecto
+# 🛠 Tecnologías
 
-```
+| Tecnología | Uso |
+|------------|-----|
+| ⚛ React | Interfaz |
+| ⚡ Vite | Empaquetador |
+| 🎨 Tailwind CSS | Diseño |
+| 🐙 GitHub | Control de versiones |
+| 🚀 GitHub Pages | Despliegue |
+
+---
+
+# 📂 Estructura
+
+```text
 auri-kosmos/
+│
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── index.html
 ├── package.json
 ├── vite.config.js
 └── README.md
@@ -92,18 +75,68 @@ auri-kosmos/
 
 ---
 
-## 🎨 Diseño
+# 💻 Desarrollo
 
-El sitio utiliza la identidad visual de **Auri Kosmos**:
+Instalar dependencias
 
-- ✨ Tipografía **Fraunces**
-- 💜 Paleta oficial de colores de la marca
-- 🌌 Inspiración visual basada en constelaciones y el concepto de "Kosmos"
+```bash
+npm install
+```
+
+Iniciar servidor
+
+```bash
+npm run dev
+```
+
+Crear versión de producción
+
+```bash
+npm run build
+```
 
 ---
 
-## 📄 Licencia
+# 🛣 Roadmap
 
-Este proyecto forma parte de la identidad digital de **Auri Kosmos**.
+- ✅ Landing Page
+- ✅ Sistema de componentes Pixel UI
+- 🔄 Laboratorio interactivo
+- 🔄 Observatorio educativo
+- 🔄 Recursos descargables
+- 🔄 Comunidad
+- 🔄 Plataforma educativa completa
 
-© 2026 Auri Kosmos. Todos los derechos reservados.
+---
+
+# 🌎 Sitio Web
+
+Cuando GitHub Pages termine de publicarse:
+
+**https://aurikosmos.github.io/aurikosmos/**
+
+---
+
+# 💜 Filosofía
+
+> *"Toda gran aventura comienza con una pregunta."*
+
+Auri no es solamente una mascota.
+
+Es la guía que acompaña cada exploración dentro de este universo.
+
+---
+
+<div align="center">
+
+## ⭐ Si este proyecto te gustó...
+
+¡No olvides darle una estrella al repositorio!
+
+<img src="public/auri-celebrando.png" width="140">
+
+---
+
+Hecho con 💜 por **Auri Kosmos**
+
+</div>
