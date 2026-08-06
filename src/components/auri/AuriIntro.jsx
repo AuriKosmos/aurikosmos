@@ -13,13 +13,17 @@ function seededRandom(seed) {
   return v - Math.floor(v)
 }
 
-const STARS = Array.from({ length: 90 }, (_, i) => ({
-  x: seededRandom(i * 2.13 + 1) * 100,
-  y: seededRandom(i * 3.71 + 7) * 100,
-  size: 1 + seededRandom(i * 5.31 + 3) * 2,
-  delay: seededRandom(i * 7.77 + 2) * 3,
-}))
-
+const STARS = Array.from({ length: 90 }, (_, i) => {
+  const angle = seededRandom(i * 4.21 + 5) * Math.PI * 2
+  const startDist = seededRandom(i * 2.13 + 1) * 15
+  return {
+    angle,
+    startDist,
+    size: 1 + seededRandom(i * 5.31 + 3) * 2,
+    duration: 2.5 + seededRandom(i * 9.13 + 4) * 3.5,
+    delay: seededRandom(i * 7.77 + 2) * 6,
+  }
+})
 function useTypewriter(text, { active, speed = 28 }) {
   const [shown, setShown] = useState('')
   useEffect(() => {
@@ -90,22 +94,31 @@ export function AuriIntro({ onEnter }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-deep text-white overflow-hidden flex flex-col items-center justify-center px-6">
-      <div className="absolute inset-0" aria-hidden="true">
-        {STARS.map((s, i) => (
-          <span
-            key={i}
-            className={`absolute rounded-full bg-white ${reducedMotion ? '' : 'animate-pulse'}`}
-            style={{
-              left: `${s.x}%`,
-              top: `${s.y}%`,
-              width: `${s.size}px`,
-              height: `${s.size}px`,
-              animationDelay: `${s.delay}s`,
-              opacity: 0.7,
-            }}
-          />
-        ))}
-      </div>
+     <div className="absolute inset-0" aria-hidden="true">
+  {STARS.map((s, i) => {
+    const tx = Math.cos(s.angle)
+    const ty = Math.sin(s.angle)
+    return (
+      <span
+        key={i}
+        className="absolute left-1/2 top-1/2 rounded-full bg-white"
+        style={{
+          width: `${s.size}px`,
+          height: `${s.size}px`,
+          animation: reducedMotion
+            ? undefined
+            : `warpFly ${s.duration}s linear infinite`,
+          animationDelay: `${s.delay}s`,
+          opacity: reducedMotion ? 0.7 : 0,
+          '--tx-start': `${tx * s.startDist}vw`,
+          '--ty-start': `${ty * s.startDist}vh`,
+          '--tx-end': `${tx * 70}vw`,
+          '--ty-end': `${ty * 70}vh`,
+        }}
+      />
+    )
+  })}
+</div>
 
       <button
         type="button"
@@ -141,7 +154,12 @@ export function AuriIntro({ onEnter }) {
         {(stage === 'dialogue' || stage === 'ready') && (
           <div className="text-left bg-white/5 border-2 border-white/20 p-5 mb-8">
             <div className="flex items-start gap-3">
-              <span className="text-2xl shrink-0" aria-hidden="true">🐧</span>
+             <img
+  src="./public/auri-hablando.gif"
+  alt=""
+  aria-hidden="true"
+  className="w-20 h-20 shrink-0 object-contain -mt-2"
+/>
               <p className="text-base sm:text-lg leading-relaxed min-h-[4.5em]">
                 {reducedMotion
                   ? AURI_LINES.join(' ')

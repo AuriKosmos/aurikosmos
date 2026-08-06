@@ -29,7 +29,7 @@ const CX = 410
 const CY = 260
 
 const ORBIT_TIERS = [
-  { rx: 140, ry: 78, speed: 1.8 },
+  { rx: 165, ry: 92, speed: 1.8 },  // antes: 140, 78
   { rx: 250, ry: 140, speed: 1.15 },
   { rx: 355, ry: 195, speed: 0.7 },
 ]
@@ -58,6 +58,7 @@ const PLANET_PALETTE = [
   'var(--c-ember)', 'var(--c-nova)', 'var(--c-brand)', 'var(--c-sun)',
 ]
 const PLANET_VARIANTS = ['cratered', 'ringed', 'striped', 'plain']
+const PLANET_IMAGES = ['./Planeta1.png', './Planeta2.png', './Planeta3.png']
 
 function seededRandom(seed) {
   const v = Math.sin(seed * 12.9898 + seed * 78.233) * 43758.5453
@@ -107,12 +108,16 @@ function Particles({ count = PARTICLE_COUNT, className = '' }) {
   )
 }
 
-function Porthole({ src, alt, size = 'w-56 h-56', ringClassName = 'border-white' }) {
+function Porthole({ src, alt, size }) {
   return (
-    <div className={`relative ${size} shrink-0`}>
-      <div className={`absolute inset-0 rounded-full border-[6px] ${ringClassName} bg-white shadow-pixel overflow-hidden`}>
-        <img src={src} alt={alt} className="pixelated w-full h-full object-contain" />
-      </div>
+    <div className={`${size} relative rounded-full bg-white overflow-hidden border-4 border-white shadow-pixel`}>
+     <img
+  src={src}
+  alt={alt}
+  className="w-[80%] h-[80%] object-contain relative z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+/>
+      {/* sombra bajo los pies */}
+      <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-2/3 h-3 bg-black/20 rounded-full blur-sm" />
     </div>
   )
 }
@@ -184,16 +189,12 @@ function Constellation() {
       </circle>
       
       {/* Auri en el centro */}
-      <text x={CX} y={CY + 8} textAnchor="middle" fontSize="26">🐧</text>
-      
-      <text x={CX} y={CY + 76} textAnchor="middle" fill="#FFFFFF" fontSize="12" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="1">
-        AURI KOSMOS
-      </text>
+
     </g>
   ), [])
 
   // 3. MATEMÁTICA 3D Y DATOS
-  const planetsData = ROADMAP.map((item, i) => {
+ const planetsData = ROADMAP.map((item, i) => {
     const orbit = ORBIT_TIERS[item.tier]
     const rad = ((item.angle + angleOffset * orbit.speed) * Math.PI) / 180
     
@@ -209,12 +210,13 @@ function Constellation() {
       isBack: depth < 0, 
       color: PLANET_PALETTE[i % PLANET_PALETTE.length],
       variant: PLANET_VARIANTS[i % PLANET_VARIANTS.length],
+      img: PLANET_IMAGES[i % PLANET_IMAGES.length], // 👈 nuevo
       isLive: Boolean(item.href)
     }
   })
 
-  const backPlanets = planetsData.filter(p => p.isBack)
-  const frontPlanets = planetsData.filter(p => !p.isBack)
+  const backPlanets = planetsData.filter(p => p.isBack).sort((a, b) => a.depth - b.depth)
+  const frontPlanets = planetsData.filter(p => !p.isBack).sort((a, b) => a.depth - b.depth)
 
   // 4. DIBUJO DE PLANETAS
   const renderPlanet = (p) => {
@@ -257,41 +259,20 @@ function Constellation() {
           <clipPath id={clipId}>
             <circle cx="0" cy="0" r={r} />
           </clipPath>
-
-          <circle cx="0" cy="0" r={r * 1.25} fill={p.color} opacity="0.45" filter="url(#kosmos-glow)" />
-
-          {p.isLive && (
-            <circle cx="0" cy="0" r={r + 6} fill="none" stroke="var(--c-ember)" strokeWidth="2" strokeDasharray="4 4" opacity="0.8" />
-          )}
-
-          {p.variant === 'ringed' && (
-            <ellipse cx="0" cy="0" rx={r * 1.75} ry={r * 0.5} fill="none" stroke={p.color} strokeWidth="4" opacity="0.6" transform="rotate(-20)" />
-          )}
-
-          <circle cx="0" cy="0" r={r} fill={p.color} stroke="var(--c-deep)" strokeWidth="3" />
+<circle cx="0" cy="0" r={r * 1.15} fill="var(--c-sky)" opacity="0.22" filter="url(#kosmos-glow)" />
 
           <g clipPath={`url(#${clipId})`}>
-            {p.variant === 'striped' && (
-              <>
-                <rect x={-r} y={-r * 0.6} width={r * 2} height={r * 0.42} fill="var(--c-deep)" opacity="0.16" />
-                <rect x={-r} y={r * 0.1} width={r * 2} height={r * 0.32} fill="var(--c-deep)" opacity="0.12" />
-              </>
-            )}
-            {p.variant === 'cratered' && (
-              <>
-                <circle cx={-r * 0.35} cy={-r * 0.28} r={r * 0.22} fill="var(--c-deep)" opacity="0.16" />
-                <circle cx={r * 0.32} cy={r * 0.12} r={r * 0.15} fill="var(--c-deep)" opacity="0.16" />
-                <circle cx={-r * 0.08} cy={r * 0.42} r={r * 0.12} fill="var(--c-deep)" opacity="0.16" />
-              </>
-            )}
-            <circle cx={r * 0.42} cy={r * 0.42} r={r * 1.05} fill="var(--c-deep)" opacity="0.22" />
-            <circle cx={-r * 0.35} cy={-r * 0.35} r={r * 0.5} fill="#FFFFFF" opacity="0.3" />
+            <image
+              href={p.img}
+              x={-r}
+              y={-r}
+              width={r * 2}
+              height={r * 2}
+              preserveAspectRatio="xMidYMid slice"
+            />
           </g>
 
-          <circle cx="0" cy="0" r={r * 0.46} fill="#FFFFFF" opacity="0.85" />
-          <text x="0" y="7" textAnchor="middle" fontSize="20">{p.emoji}</text>
-
-          <text x="0" y={labelDy} textAnchor="middle" fill="#FFFFFF" fontSize="12" fontFamily="Inter, sans-serif" fontWeight="600">
+<text x="0" y={labelDy} textAnchor="middle" fill="#FFFFFF" fontSize="11" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="0.5">
             {p.label}
           </text>
         </g>
@@ -315,10 +296,10 @@ function Constellation() {
     )
   }
 
-  return (
+ return (
     <svg
       viewBox="0 0 820 620"
-      className="w-full h-auto max-w-4xl mx-auto"
+      className="w-full h-auto min-w-[600px] sm:min-w-0 max-w-4xl mx-auto"
       style={BRAND_VARS}
       role="img"
       aria-label="Mapa interactivo del ecosistema Auri Kosmos."
@@ -329,6 +310,12 @@ function Constellation() {
       {backPlanets.map(renderPlanet)}
       {coreLayer}
       {frontPlanets.map(renderPlanet)}
+
+      {/* Texto y pingüino siempre visibles, por encima de todo */}
+      <text x={CX} y={CY + 8} textAnchor="middle" fontSize="26">🐧</text>
+      <text x={CX} y={CY + 76} textAnchor="middle" fill="#FFFFFF" fontSize="12" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="1">
+        AURI KOSMOS
+      </text>
     </svg>
   )
 }
@@ -484,7 +471,7 @@ export default function Home() {
           <div className="flex justify-center relative z-10">
             <TiltCard liftClassName="hover:-translate-y-0">
               <Porthole
-                src="./auri-hablando.png"
+                src="./auri-hablando.gif"
                 alt="Auri, el pingüino astronauta mascota de Auri Kosmos, saludando"
                 size="w-64 h-64 sm:w-72 sm:h-72"
               />
@@ -512,7 +499,9 @@ export default function Home() {
               </h2>
             </div>
           </div>
-          <Constellation />
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
+            <Constellation />
+          </div>
         </PageContainer>
         </Reveal>
       </section>
