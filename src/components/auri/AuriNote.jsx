@@ -1,7 +1,3 @@
-/**
- * Burbuja de Auri con una línea corta. Se usa después de generar,
- * o para avisos suaves (nunca errores duros — esos van aparte).
- */
 export function AuriNote({ line }) {
   if (!line) return null
   return (

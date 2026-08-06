@@ -1,14 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-/**
- * Secuencia de entrada cinemática — lo primero que ve un docente antes
- * de llegar al Home. No es decoración: es el primer contacto con Auri,
- * el momento donde "plataforma" se convierte en "personaje que te llama".
- *
- * Se muestra una sola vez por sesión (sessionStorage) y siempre es
- * saltable — nadie queda atrapado en una animación.
- */
-
 const SIGNAL_LINE = 'TRANSMISIÓN ENTRANTE...'
 
 const AURI_LINES = [

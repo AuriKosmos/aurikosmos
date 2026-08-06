@@ -11,18 +11,9 @@ import DesignSystem from '../features/design-system/pages/DesignSystem.jsx'
 import { AuriIntro, AURI_INTRO_SESSION_KEY } from '../components/auri'
 import { useHashRoute } from './useHashRoute.js'
 
-/**
- * App ahora es SOLO el router. Todo el contenido del Home (hero,
- * constelación del roadmap, misiones, CTA final) vive en
- * ../features/home/pages/Home.jsx, siguiendo el mismo patrón que
- * laboratorio/ y observatorio/.
- */
 export default function App() {
   const route = useHashRoute()
 
-  // La intro cinemática solo interrumpe la primera visita del Home en la
-  // sesión — nunca al navegar dentro de las herramientas, y nunca de nuevo
-  // si ya se vio (o se saltó) una vez.
   const isHome = route === '#/' || route === '' || route === '#'
   const [introDone, setIntroDone] = useState(() => {
     if (typeof window === 'undefined') return true
@@ -38,7 +29,8 @@ export default function App() {
 
   if (route.startsWith('#/laboratorio/sopa-de-letras')) return <SopaDeLetras />
   if (route.startsWith('#/laboratorio/crucigramas')) return <Crucigramas />
-  if (route.startsWith ('#/laboratorio/flashcards')) return <Flashcards />
+  if (route.startsWith('#/laboratorio/flashcards')) return <Flashcards />
+  if (route.startsWith('#/laboratorio/bingo')) return <Bingo />
   if (route.startsWith('#/laboratorio/dados')) return <Dados />
   if (route.startsWith('#/laboratorio')) return <Laboratorio />
   if (route.startsWith('#/observatorio/construye-mi-clase')) return <ConstruyeMiClase />

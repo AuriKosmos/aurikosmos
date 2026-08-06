@@ -327,7 +327,7 @@ function Constellation() {
     >
       {backgroundLayer}
       {backPlanets.map(renderPlanet)}
-      {coreLayer} {/* <-- El nuevo núcleo ahora está aquí en el centro */}
+      {coreLayer}
       {frontPlanets.map(renderPlanet)}
     </svg>
   )
@@ -354,7 +354,7 @@ function useTilt(maxDeg = 8) {
   }
 
   function handleMouseLeave() {
-    if (!ref.current) return
+    if (!ref.current) returnö
     ref.current.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)'
   }
 
@@ -368,7 +368,6 @@ function TiltCard({ children, className = '', liftClassName = '' }) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      // La propiedad style ya no se actualiza por estado de React
       className={`transition-transform duration-150 ease-out will-change-transform hover:-translate-y-1 ${liftClassName} ${className}`}
     >
       {children}
