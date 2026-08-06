@@ -3,7 +3,7 @@ import { Navbar, Footer, PageContainer } from '../../../components/layout'
 const MACHINES = [
   { id: 'sopa-de-letras', label: 'Sopa de letras', emoji: '🔤', active: true },
   { id: 'crucigramas', label: 'Crucigramas', emoji: '🧩', active: true },
-  { id: 'flashcards', label: 'Flashcards', emoji: '🃏', active: true }, // <-- ¡MÁQUINA ENCENDIDA!
+  { id: 'flashcards', label: 'Flashcards', emoji: '🃏', active: true }, 
   { id: 'bingo', label: 'Bingo', emoji: '🎱', active: true },
   { id: 'diplomas', label: 'Diplomas', emoji: '🎓', active: false },
   { id: 'certificados', label: 'Certificados', emoji: '📜', active: false },
@@ -12,7 +12,7 @@ const MACHINES = [
   { id: 'planificaciones', label: 'Planificaciones', emoji: '🗂️', active: false },
   { id: 'calendarios', label: 'Calendarios', emoji: '📅', active: false },
   { id: 'ruleta', label: 'Ruleta', emoji: '🎡', active: false },
-  { id: 'dados', label: 'Dados', emoji: '🎲', active: true }, // <-- ¡MÁQUINA ENCENDIDA!
+  { id: 'dados', label: 'Dados', emoji: '🎲', active: true },
 ]
 
 function MachineCard({ machine }) {
