@@ -23,8 +23,8 @@ const EXAMPLE_ROWS = [
 
 const CELL_SIZE = {
   sm: { box: 'w-6 h-6 sm:w-7 sm:h-7', text: 'text-xs', num: 'text-[7px]', label: 'Pequeña' },
-  md: { box: 'w-8 h-8 sm:w-9 sm:h-9', text: 'text-sm', num: 'text-[8px]', label: 'Mediana' },
-  lg: { box: 'w-10 h-10 sm:w-11 sm:h-11', text: 'text-base', num: 'text-[9px]', label: 'Grande' },
+  md: { box: 'w-7 h-7 sm:w-9 sm:h-9', text: 'text-xs sm:text-sm', num: 'text-[7px] sm:text-[8px]', label: 'Mediana' },
+  lg: { box: 'w-8 h-8 sm:w-11 sm:h-11', text: 'text-sm sm:text-base', num: 'text-[8px] sm:text-[9px]', label: 'Grande' },
 }
 const CELL_SIZE_OPTIONS = Object.entries(CELL_SIZE).map(([value, cfg]) => ({ value, label: cfg.label }))
 
@@ -141,18 +141,18 @@ export default function Crucigramas() {
 
       <section className="pb-24">
        <PageContainer>
-        <div className="text-center mb-10 no-print">
+        <div className="text-center mb-8 sm:mb-10 no-print px-2">
           <p className="font-label text-[10px] tracking-widest text-brand mb-4">🧩 GENERADOR</p>
-          <h1 className="font-display text-4xl text-deep font-semibold mb-3">Crucigrama</h1>
-          <p className="text-deep/70 max-w-md mx-auto">
+          <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Crucigrama</h1>
+          <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base">
             Una fila por palabra: la palabra a la izquierda, su pista a la derecha.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[380px_1fr] gap-8 items-start">
+        <div className="grid lg:grid-cols-[380px_1fr] gap-6 sm:gap-8 items-start">
           <PixelPanel title="MÁQUINA DE CRUCIGRAMAS" icon="🧩">
             <PixelField label="Palabras y pistas">
-              <div className="flex gap-2 mb-3">
+              <div className="flex flex-wrap gap-2 mb-3">
                 <input
                   type="file"
                   ref={fileInputRef}
@@ -162,7 +162,7 @@ export default function Crucigramas() {
                 />
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex-1 text-xs font-medium text-deep border-2 border-deep py-1.5 bg-white hover:bg-cream transition-colors focus:outline-none"
+                  className="flex-1 min-w-[140px] text-xs font-medium text-deep border-2 border-deep py-1.5 bg-white hover:bg-cream transition-colors focus:outline-none"
                 >
                   📥 Importar desde Excel
                 </button>
@@ -174,53 +174,62 @@ export default function Crucigramas() {
                 </button>
               </div>
 
-              <div className="flex gap-2 mb-1.5 px-0.5">
+              <div className="hidden sm:flex gap-2 mb-1.5 px-0.5">
                 <span className="flex-1 font-label text-[8px] text-deep/40">PALABRA</span>
                 <span className="flex-[2] font-label text-[8px] text-deep/40">PISTA (OPCIONAL)</span>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3 sm:space-y-2">
                 {rows.map((row, i) => (
-                  <div key={row.id} className="flex gap-1.5 items-center">
-                    <input
-                      type="text"
-                      value={row.word}
-                      onChange={(e) => updateRow(row.id, 'word', e.target.value)}
-                      placeholder={`PALABRA ${i + 1}`}
-                      className="flex-1 min-w-0 border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white"
-                    />
-                    <span className="text-deep/30 font-label text-xs shrink-0">—</span>
-                    <input
-                      type="text"
-                      value={row.clue}
-                      onChange={(e) => updateRow(row.id, 'clue', e.target.value)}
-                      placeholder="pista"
-                      className="flex-[2] min-w-0 border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white"
-                    />
-                    <div className="flex flex-col shrink-0">
-                      <button
-                        onClick={() => moveRow(row.id, -1)}
-                        disabled={i === 0}
-                        className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
-                        aria-label={`Subir palabra ${i + 1}`}
-                      >
-                        ▲
-                      </button>
-                      <button
-                        onClick={() => moveRow(row.id, 1)}
-                        disabled={i === rows.length - 1}
-                        className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
-                        aria-label={`Bajar palabra ${i + 1}`}
-                      >
-                        ▼
-                      </button>
+                  <div
+                    key={row.id}
+                    className="flex flex-col gap-1.5 pb-3 border-b border-dashed border-deep/10 sm:flex-row sm:items-center sm:pb-0 sm:border-0"
+                  >
+                    <div className="flex gap-1.5 items-center">
+                      <input
+                        type="text"
+                        value={row.word}
+                        onChange={(e) => updateRow(row.id, 'word', e.target.value)}
+                        placeholder={`PALABRA ${i + 1}`}
+                        className="flex-1 min-w-0 border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white"
+                      />
+                      <span className="hidden sm:inline text-deep/30 font-label text-xs shrink-0">—</span>
                     </div>
-                    <button
-                      onClick={() => removeRow(row.id)}
-                      className="shrink-0 w-7 h-7 flex items-center justify-center text-deep/40 hover:text-blossom hover:border-blossom border-2 border-transparent"
-                      aria-label={`Eliminar palabra ${i + 1}`}
-                    >
-                      ✕
-                    </button>
+                    <div className="flex gap-1.5 items-center">
+                      <input
+                        type="text"
+                        value={row.clue}
+                        onChange={(e) => updateRow(row.id, 'clue', e.target.value)}
+                        placeholder="pista"
+                        className="flex-1 sm:flex-[2] min-w-0 border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      />
+                      <div className="flex items-center gap-1 shrink-0">
+                        <div className="flex flex-col shrink-0">
+                          <button
+                            onClick={() => moveRow(row.id, -1)}
+                            disabled={i === 0}
+                            className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
+                            aria-label={`Subir palabra ${i + 1}`}
+                          >
+                            ▲
+                          </button>
+                          <button
+                            onClick={() => moveRow(row.id, 1)}
+                            disabled={i === rows.length - 1}
+                            className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
+                            aria-label={`Bajar palabra ${i + 1}`}
+                          >
+                            ▼
+                          </button>
+                        </div>
+                        <button
+                          onClick={() => removeRow(row.id)}
+                          className="shrink-0 w-7 h-7 flex items-center justify-center text-deep/40 hover:text-blossom hover:border-blossom border-2 border-transparent"
+                          aria-label={`Eliminar palabra ${i + 1}`}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -318,11 +327,11 @@ export default function Crucigramas() {
           </PixelPanel>
 
           {/* Resultado / Hoja imprimible */}
-          <div className="printable">
+          <div className="printable min-w-0">
             {!result && <EmptyPreview>Tu crucigrama va a aparecer aquí.</EmptyPreview>}
 
             {result && result.rows > 0 && (
-              <div className="bg-white border-2 border-deep p-6 sm:p-8">
+              <div className="bg-white border-2 border-deep p-4 sm:p-8">
                 <SheetHeader
                   title={title}
                   badge={showAnswers ? '(respuestas)' : null}
@@ -332,34 +341,36 @@ export default function Crucigramas() {
                   extraLabel={extraLabel}
                 />
 
-                <div
-                  className="grid w-fit mx-auto"
-                  style={{ gridTemplateColumns: `repeat(${result.cols}, minmax(0, 1fr))` }}
-                >
-                  {result.cells.map((row, r) =>
-                    row.map((letter, c) => {
-                      const number = result.numbers.get(`${r},${c}`)
-                      if (letter === null) {
-                        return <div key={`${r}-${c}`} className={`${size.box} bg-deep`} />
-                      }
-                      return (
-                        <div
-                          key={`${r}-${c}`}
-                          className={`${size.box} relative border border-deep flex items-center justify-center font-bold text-deep`}
-                        >
-                          {number && (
-                            <span className={`absolute top-0 left-0.5 ${size.num} font-normal text-deep/70`}>
-                              {number}
-                            </span>
-                          )}
-                          <span className={size.text}>{showAnswers ? letter : ''}</span>
-                        </div>
-                      )
-                    }),
-                  )}
+                <div className="overflow-x-auto">
+                  <div
+                    className="grid w-fit mx-auto"
+                    style={{ gridTemplateColumns: `repeat(${result.cols}, minmax(0, 1fr))` }}
+                  >
+                    {result.cells.map((row, r) =>
+                      row.map((letter, c) => {
+                        const number = result.numbers.get(`${r},${c}`)
+                        if (letter === null) {
+                          return <div key={`${r}-${c}`} className={`${size.box} bg-deep`} />
+                        }
+                        return (
+                          <div
+                            key={`${r}-${c}`}
+                            className={`${size.box} relative border border-deep flex items-center justify-center font-bold text-deep`}
+                          >
+                            {number && (
+                              <span className={`absolute top-0 left-0.5 ${size.num} font-normal text-deep/70`}>
+                                {number}
+                              </span>
+                            )}
+                            <span className={size.text}>{showAnswers ? letter : ''}</span>
+                          </div>
+                        )
+                      }),
+                    )}
+                  </div>
                 </div>
 
-                <div className="mt-8 grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto text-left">
+                <div className="mt-8 grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-2xl mx-auto text-left">
                   <div>
                     <p className="font-label text-[9px] tracking-wide text-brand mb-3">HORIZONTALES</p>
                     <ol className="space-y-2 text-sm text-deep">
@@ -405,39 +416,41 @@ export default function Crucigramas() {
                 <p className="no-print text-center font-label text-[9px] tracking-widest text-brand mb-4">
                   🔑 HOJA DE RESPUESTAS — SOLO PARA EL DOCENTE
                 </p>
-                <div className="bg-white border-2 border-deep p-6 sm:p-8">
+                <div className="bg-white border-2 border-deep p-4 sm:p-8">
                   <SheetHeader
                     title={`${title} — Respuestas`}
                   />
 
-                  <div
-                    className="grid w-fit mx-auto"
-                    style={{ gridTemplateColumns: `repeat(${result.cols}, minmax(0, 1fr))` }}
-                  >
-                    {result.cells.map((row, r) =>
-                      row.map((letter, c) => {
-                        const number = result.numbers.get(`${r},${c}`)
-                        if (letter === null) {
-                          return <div key={`ak-${r}-${c}`} className={`${size.box} bg-deep`} />
-                        }
-                        return (
-                          <div
-                            key={`ak-${r}-${c}`}
-                            className={`${size.box} relative border border-deep flex items-center justify-center font-bold text-deep bg-mint/40`}
-                          >
-                            {number && (
-                              <span className={`absolute top-0 left-0.5 ${size.num} font-normal text-deep/70`}>
-                                {number}
-                              </span>
-                            )}
-                            <span className={size.text}>{letter}</span>
-                          </div>
-                        )
-                      }),
-                    )}
+                  <div className="overflow-x-auto">
+                    <div
+                      className="grid w-fit mx-auto"
+                      style={{ gridTemplateColumns: `repeat(${result.cols}, minmax(0, 1fr))` }}
+                    >
+                      {result.cells.map((row, r) =>
+                        row.map((letter, c) => {
+                          const number = result.numbers.get(`${r},${c}`)
+                          if (letter === null) {
+                            return <div key={`ak-${r}-${c}`} className={`${size.box} bg-deep`} />
+                          }
+                          return (
+                            <div
+                              key={`ak-${r}-${c}`}
+                              className={`${size.box} relative border border-deep flex items-center justify-center font-bold text-deep bg-mint/40`}
+                            >
+                              {number && (
+                                <span className={`absolute top-0 left-0.5 ${size.num} font-normal text-deep/70`}>
+                                  {number}
+                                </span>
+                              )}
+                              <span className={size.text}>{letter}</span>
+                            </div>
+                          )
+                        }),
+                      )}
+                    </div>
                   </div>
 
-                  <div className="mt-8 grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto text-left">
+                  <div className="mt-8 grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-2xl mx-auto text-left">
                     <div>
                       <p className="font-label text-[9px] tracking-wide text-brand mb-3">HORIZONTALES</p>
                       <ol className="space-y-2 text-sm text-deep">
