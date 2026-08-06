@@ -5,7 +5,7 @@ const MACHINES = [
   { id: 'crucigramas', label: 'Crucigramas', emoji: '🧩', active: true },
   { id: 'flashcards', label: 'Flashcards', emoji: '🃏', active: true }, 
   { id: 'bingo', label: 'Bingo', emoji: '🎱', active: true },
-  { id: 'diplomas', label: 'Diplomas', emoji: '🎓', active: false },
+  { id: 'diplomas', label: 'Diplomas', emoji: '🎓', active: true },
   { id: 'certificados', label: 'Certificados', emoji: '📜', active: false },
   { id: 'horarios', label: 'Horarios', emoji: '🗓️', active: false },
   { id: 'rubricas', label: 'Rúbricas', emoji: '📊', active: false },

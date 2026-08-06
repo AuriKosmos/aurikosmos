@@ -47,7 +47,7 @@ export const SECTIONS = [
       { id: 'flashcards', label: 'Flashcards', icon: '🃏', href: '#/laboratorio/flashcards', active: true },
       { id: 'bingo', label: 'Bingo', icon: '🎱', href: '#/laboratorio/bingo', active: true },
       { id: 'dados', label: 'Dados', icon: '🎲', href: '#/laboratorio/dados', active: true },
-      { id: 'diplomas', label: 'Diplomas', icon: '🎓', active: false },
+      { id: 'diplomas', label: 'Diplomas', icon: '🎓', active: true },
       { id: 'certificados', label: 'Certificados', icon: '📜', active: false },
       { id: 'horarios', label: 'Horarios', icon: '🗓️', active: false },
       { id: 'rubricas', label: 'Rúbricas', icon: '📊', active: false },

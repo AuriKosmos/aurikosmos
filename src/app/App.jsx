@@ -5,6 +5,7 @@ import SopaDeLetras from '../features/laboratorio/pages/SopaDeLetras.jsx'
 import Crucigramas from '../features/laboratorio/pages/Crucigramas.jsx'
 import Flashcards from '../features/laboratorio/pages/Flashcards'
 import Dados from '../features/laboratorio/pages/Dados.jsx'
+import Diplomas from '../features/laboratorio/pages/Diplomas.jsx'
 import Bingo from '../features/laboratorio/pages/Bingo.jsx'
 import Observatorio from '../features/observatorio/pages/Observatorio.jsx'
 import ConstruyeMiClase from '../features/observatorio/pages/ConstruyeMiClase.jsx'
@@ -32,6 +33,7 @@ export default function App() {
   if (route.startsWith('#/laboratorio/crucigramas')) return <Crucigramas />
   if (route.startsWith('#/laboratorio/flashcards')) return <Flashcards />
   if (route.startsWith('#/laboratorio/bingo')) return <Bingo />
+  if (route.startsWith('#/laboratorio/diplomas'))return <Diplomas/>
   if (route.startsWith('#/laboratorio/dados')) return <Dados />
   if (route.startsWith('#/laboratorio')) return <Laboratorio />
   if (route.startsWith('#/observatorio/construye-mi-clase')) return <ConstruyeMiClase />
