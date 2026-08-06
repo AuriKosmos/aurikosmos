@@ -6,30 +6,40 @@ import { PixelPanel, PixelField, EmptyPreview } from '../components'
 import { Navbar, Footer, PageContainer } from '../../../components/layout'
 
 const AURI_LINES = [
-  '¡Qué lindo momento para tus estudiantes!',
-  'Un diploma bien hecho se guarda para siempre.',
-  '¿Imprimimos uno de prueba primero?',
-  'Me encanta reconocer el esfuerzo.',
+  'Un certificado deja constancia de lo cumplido.',
+  '¿Revisamos el código antes de imprimir todos?',
+  'Buen trabajo cerrando el taller.',
+  'Esto también sirve para tu portafolio docente.',
 ]
 
 const EXAMPLE_NAMES = 'María José Andrade\nCarlos Mendoza\nSofía Vera\nMateo Chávez\nEmilia Torres'
 
-const DEFAULT_REASON =
-  'Por su destacado esfuerzo, dedicación y compromiso durante el año lectivo.'
-
-const MAX_IMAGE_BYTES = 3 * 1024 * 1024 // 3MB — evita diplomas pesadísimos al imprimir/exportar
+const MAX_IMAGE_BYTES = 3 * 1024 * 1024 // 3MB — evita certificados pesadísimos al imprimir/exportar
 const MAX_HEADER_LINES = 4
 
 const HEADER_WORD_RE = /^(nombre|nombres|estudiante|estudiantes|apellidos?|alumno|alumnos?)s?\s*$/i
 
+// A diferencia de Diplomas (un logro individual), Certificados documenta la
+// participación en algo puntual: un taller, curso o capacitación — por eso
+// pide curso, horas y un código, en vez de un "motivo" libre.
+const TYPES = {
+  participacion: { label: 'Participación', verb: 'participó en' },
+  asistencia: { label: 'Asistencia', verb: 'asistió a' },
+  aprobacion: { label: 'Aprobación', verb: 'aprobó' },
+}
+const TYPE_OPTIONS = Object.entries(TYPES).map(([value, cfg]) => ({ value, label: cfg.label }))
+
+// Mismos temas de color que Diplomas — se agregaría un theme.js compartido
+// si esta paleta se repite en un tercer generador.
 const THEMES = {
+  deep: { label: 'Formal', border: 'border-deep', innerBorder: 'border-deep/25', text: 'text-deep', corner: 'text-deep/70' },
   brand: { label: 'Morado', border: 'border-brand', innerBorder: 'border-brand/30', text: 'text-brand', corner: 'text-brand' },
   mint: { label: 'Verde', border: 'border-mint', innerBorder: 'border-mint/40', text: 'text-deep', corner: 'text-mint' },
   sun: { label: 'Dorado', border: 'border-sun', innerBorder: 'border-sun/40', text: 'text-deep', corner: 'text-sun' },
-  blossom: { label: 'Rosa', border: 'border-blossom', innerBorder: 'border-blossom/50', text: 'text-deep', corner: 'text-blossom' },
 }
 const THEME_OPTIONS = Object.entries(THEMES).map(([value, cfg]) => ({ value, label: cfg.label }))
 
+// Fondos decorativos — símbolos repetidos muy tenues detrás del contenido.
 const BACKGROUNDS = {
   none: { label: 'Ninguno', symbols: null },
   math: { label: 'Matemáticas', symbols: ['π', '∑', '√', '∞', '÷', '×', 'Δ', '∫'] },
@@ -49,7 +59,7 @@ const FONTS = {
 }
 const FONT_OPTIONS = Object.entries(FONTS).map(([value, cfg]) => ({ value, ...cfg }))
 
-// Tamaños de logo (ancho/alto del recuadro) y de firma (alto de la imagen).
+// Tamaños de logo (recuadro) y de firma (alto de imagen).
 const LOGO_SIZES = {
   sm: { label: 'Pequeño', boxClass: 'w-9 sm:w-10 h-8 sm:h-9' },
   md: { label: 'Mediano', boxClass: 'w-12 sm:w-14 h-10 sm:h-12' },
@@ -64,8 +74,7 @@ const SIGNATURE_SIZES = {
 }
 const SIGNATURE_SIZE_OPTIONS = Object.entries(SIGNATURE_SIZES).map(([value, cfg]) => ({ value, label: cfg.label }))
 
-// Escalas de tamaño de letra del diploma — multiplican los tamaños base (en px)
-// de título, nombre y texto de motivo/encabezado.
+// Escalas de tamaño de letra — multiplican los tamaños base (px) de cada texto.
 const TEXT_SIZES = {
   sm: { label: 'Pequeña', scale: 0.82 },
   md: { label: 'Mediana', scale: 1 },
@@ -73,16 +82,16 @@ const TEXT_SIZES = {
 }
 const TEXT_SIZE_OPTIONS = Object.entries(TEXT_SIZES).map(([value, cfg]) => ({ value, label: cfg.label }))
 
-// Tamaños base en px (antes de escalar) para cada pieza de texto del diploma.
+// Tamaños base en px (antes de escalar) para cada pieza de texto del certificado.
 const BASE_PX = {
   headerLine: [12, 10, 9, 9],
-  title: 30,
+  title: 28,
   intro: 13,
   name: 24,
-  reason: 13,
+  body: 13,
   signerName: 13,
   signerRole: 10,
-  date: 11,
+  footer: 11,
 }
 
 let headerLineSeq = 0
@@ -98,10 +107,16 @@ function parseNames(raw) {
     .filter((n) => n.length > 0)
 }
 
+function buildCode(prefix, index) {
+  const year = new Date().getFullYear()
+  const p = (prefix || 'AK').trim().toUpperCase()
+  return `${p}-${year}-${String(index + 1).padStart(4, '0')}`
+}
+
 function readImageFile(file, onLoaded) {
   if (!file) return
   if (file.size > MAX_IMAGE_BYTES) {
-    alert('Esa imagen pesa demasiado. Usa un archivo más liviano (menos de 3MB) para que el diploma no se vuelva pesado al imprimir.')
+    alert('Esa imagen pesa demasiado. Usa un archivo más liviano (menos de 3MB) para que el certificado no se vuelva pesado al imprimir.')
     return
   }
   const reader = new FileReader()
@@ -180,7 +195,7 @@ function ImageUploadSlot({ label, image, onUpload, onRemove, heightClass = 'h-20
   )
 }
 
-function DiplomaBackground({ background }) {
+function CertificateBackground({ background }) {
   const bg = BACKGROUNDS[background]
   if (!bg || !bg.symbols) return null
   const cells = Array.from({ length: 24 })
@@ -218,9 +233,8 @@ function CollapsibleSection({ title, defaultOpen = false, children }) {
   )
 }
 
-// Selector de tipografía en cuadrícula — cada tarjeta muestra su propio nombre
-// escrito en esa misma fuente, para previsualizar antes de elegir. Evita que
-// una fila larga se corte visualmente (lo que pasaba con el selector de una sola línea).
+// Selector de tipografía en cuadrícula — cada tarjeta muestra su nombre en su
+// propia fuente, para previsualizar antes de elegir.
 function FontPicker({ value, onChange }) {
   return (
     <div className="grid grid-cols-2 gap-2">
@@ -248,15 +262,20 @@ function FontPicker({ value, onChange }) {
   )
 }
 
-export default function Diplomas() {
+export default function Certificados() {
   const [namesInput, setNamesInput] = useState(EXAMPLE_NAMES)
   const [importError, setImportError] = useState('')
-  const [diplomaTitle, setDiplomaTitle] = useState('Diploma al Mérito')
-  const [reason, setReason] = useState(DEFAULT_REASON)
+  const [type, setType] = useState('participacion')
+  const [courseName, setCourseName] = useState('')
+  const [hours, setHours] = useState('')
+  const [customBody, setCustomBody] = useState('')
 
   // Encabezado vacío por defecto — cada quien pone su institución, facultad, carrera, etc.
   const [headerLines, setHeaderLines] = useState([newHeaderLine('')])
 
+  const [dateLabel, setDateLabel] = useState('')
+  const [includeCode, setIncludeCode] = useState(true)
+  const [codePrefix, setCodePrefix] = useState('AK')
   const [signer1Name, setSigner1Name] = useState('')
   const [signer1Role, setSigner1Role] = useState('Docente')
   const [signer1Signature, setSigner1Signature] = useState(null)
@@ -264,8 +283,7 @@ export default function Diplomas() {
   const [signer2Name, setSigner2Name] = useState('')
   const [signer2Role, setSigner2Role] = useState('Director/a')
   const [signer2Signature, setSigner2Signature] = useState(null)
-  const [dateLabel, setDateLabel] = useState('')
-  const [theme, setTheme] = useState('brand')
+  const [theme, setTheme] = useState('deep')
   const [background, setBackground] = useState('none')
   const [font, setFont] = useState('default')
   const [logoSize, setLogoSize] = useState('md')
@@ -323,6 +341,8 @@ export default function Diplomas() {
   }
 
   const t = THEMES[theme]
+  const typeCfg = TYPES[type]
+  const count = parseNames(namesInput).length
   const activeHeaderLines = headerLines.filter((l) => l.text.trim().length > 0)
   const showHeaderRow = Boolean(logo1 || logo2 || activeHeaderLines.length > 0)
   const fontFamily = FONTS[font]?.family || undefined
@@ -332,7 +352,7 @@ export default function Diplomas() {
   const signatureImgClass = SIGNATURE_SIZES[signatureSize].imgClass
 
   // Estilo de texto reutilizable — aplica fuente y tamaño escalado directo en
-  // cada elemento, para que TODO el diploma cambie junto (no solo el contenedor).
+  // cada elemento, para que TODO el certificado cambie junto.
   const textStyle = (basePx) => ({
     fontFamily,
     fontSize: px(basePx),
@@ -340,23 +360,72 @@ export default function Diplomas() {
 
   return (
     <div className="min-h-screen bg-white">
-      <style>{'@media print { @page { size: landscape; } }'}</style>
+      {/* Igual que en Diplomas: horizontal solo mientras esta página está montada.
+          IMPORTANTE: usamos "297mm 210mm" (A4 explícito) en vez de la palabra
+          clave "landscape". Muchos drivers de impresoras físicas (Epson, HP, etc.)
+          IGNORAN "landscape" y solo respetan orientación real cuando les das el
+          ancho x alto exactos. Con las dimensiones explícitas, la hoja sale
+          horizontal sin que el usuario tenga que cambiar nada manualmente en el
+          diálogo de impresión. */}
+      <style>{`
+        @media print {
+          @page {
+            size: 297mm 210mm;
+            margin: 1cm;
+          }
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
+          body * { visibility: hidden; }
+          .printable, .printable * { visibility: visible; }
+          .printable {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .printable > div {
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 1.414 / 1 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            page-break-inside: avoid !important;
+          }
+        }
+      `}</style>
 
-      <Navbar backHref="#/laboratorio" backLabel="LABORATORIO" />
+      <div className="no-print">
+        <Navbar backHref="#/laboratorio" backLabel="LABORATORIO" />
+      </div>
 
       <section className="pb-24">
         <PageContainer>
           <div className="text-center mb-8 sm:mb-10 no-print px-2">
-            <p className="font-label text-[10px] tracking-widest text-brand mb-4">🎓 GENERADOR</p>
-            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Diplomas</h1>
+            <p className="font-label text-[10px] tracking-widest text-brand mb-4">📜 GENERADOR</p>
+            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Certificados</h1>
             <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base">
-              Escribe la lista de estudiantes y el motivo del reconocimiento — genera un diploma
-              listo para imprimir por cada uno, con su nombre ya puesto.
+              Para talleres, cursos o capacitaciones — con curso, horas y un código de
+              verificación por estudiante.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-[340px_1fr] gap-6 sm:gap-8 items-start">
-            <PixelPanel title="MÁQUINA DE DIPLOMAS" icon="🎓">
+            <PixelPanel title="MÁQUINA DE CERTIFICADOS" icon="📜">
               <PixelField
                 label="Estudiantes (uno por línea)"
                 hint="Escríbelos a mano o sube un Excel/CSV con los nombres en la primera columna."
@@ -398,27 +467,59 @@ export default function Diplomas() {
                 {importError && <p className="text-[11px] text-red-600 mt-1.5">{importError}</p>}
               </PixelField>
 
-              <CollapsibleSection title="CONTENIDO DEL DIPLOMA" defaultOpen>
-                <PixelField label="Título del diploma">
+              <CollapsibleSection title="CONTENIDO DEL CERTIFICADO" defaultOpen>
+                <PixelField label="Tipo de certificado">
+                  <PixelSegmented options={TYPE_OPTIONS} value={type} onChange={setType} />
+                </PixelField>
+
+                <PixelField label="Nombre del curso o taller" hint="Aparece en el cuerpo del certificado, ej. «Uso de IA en el aula».">
                   <input
                     type="text"
-                    value={diplomaTitle}
-                    onChange={(e) => setDiplomaTitle(e.target.value)}
+                    value={courseName}
+                    onChange={(e) => setCourseName(e.target.value)}
                     className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
-                    placeholder="Diploma al Mérito"
+                    placeholder="Ej. Uso de IA en el aula"
+                  />
+                </PixelField>
+
+                <PixelField label="Horas académicas (opcional)">
+                  <input
+                    type="text"
+                    value={hours}
+                    onChange={(e) => setHours(e.target.value)}
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    placeholder="Ej. 20"
+                    inputMode="numeric"
                   />
                 </PixelField>
 
                 <PixelField
-                  label="Motivo del reconocimiento"
-                  hint="No hace falta repetir el nombre — ya aparece arriba de este texto en el diploma."
+                  label="Texto del cuerpo (opcional)"
+                  hint="Si lo dejas vacío, se genera automáticamente con el curso y las horas que pusiste arriba."
                 >
                   <textarea
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
+                    value={customBody}
+                    onChange={(e) => setCustomBody(e.target.value)}
                     rows={3}
-                    className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                    placeholder={`${typeCfg.verb} "${courseName || 'el curso indicado'}"${hours ? `, con una duración de ${hours} horas académicas` : ''}.`}
                   />
+                </PixelField>
+
+                <PixelField>
+                  <PixelCheckbox checked={includeCode} onChange={(e) => setIncludeCode(e.target.checked)}>
+                    Incluir código de certificado
+                  </PixelCheckbox>
+                  {includeCode && (
+                    <input
+                      type="text"
+                      value={codePrefix}
+                      onChange={(e) => setCodePrefix(e.target.value)}
+                      className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      placeholder="Prefijo, ej. AK"
+                      maxLength={8}
+                    />
+                  )}
                 </PixelField>
               </CollapsibleSection>
 
@@ -577,8 +678,7 @@ export default function Diplomas() {
               </CollapsibleSection>
 
               <PixelButton onClick={handleGenerate}>
-                ✨ Generar {parseNames(namesInput).length || ''} diploma
-                {parseNames(namesInput).length === 1 ? '' : 's'}
+                ✨ Generar {count || ''} certificado{count === 1 ? '' : 's'}
               </PixelButton>
 
               {names && (
@@ -595,7 +695,7 @@ export default function Diplomas() {
             <div className="min-w-0 lg:sticky lg:top-6 self-start">
               {!names && (
                 <div className="no-print">
-                  <EmptyPreview>Tus diplomas van a aparecer aquí, uno por estudiante.</EmptyPreview>
+                  <EmptyPreview>Tus certificados van a aparecer aquí, uno por estudiante.</EmptyPreview>
                 </div>
               )}
 
@@ -607,18 +707,18 @@ export default function Diplomas() {
                         onClick={() => setPreviewIndex((i) => Math.max(0, i - 1))}
                         disabled={previewIndex === 0}
                         className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
-                        aria-label="Diploma anterior"
+                        aria-label="Certificado anterior"
                       >
                         ◀
                       </button>
                       <span className="font-label text-[9px] tracking-wide text-deep/60">
-                        VISTA PREVIA — DIPLOMA {previewIndex + 1} DE {names.length}
+                        VISTA PREVIA — CERTIFICADO {previewIndex + 1} DE {names.length}
                       </span>
                       <button
                         onClick={() => setPreviewIndex((i) => Math.min(names.length - 1, i + 1))}
                         disabled={previewIndex === names.length - 1}
                         className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
-                        aria-label="Diploma siguiente"
+                        aria-label="Certificado siguiente"
                       >
                         ▶
                       </button>
@@ -635,8 +735,9 @@ export default function Diplomas() {
                         style={i > 0 ? { breakBefore: 'page' } : undefined}
                       >
                         <div className={`relative w-full h-full border-2 border-dashed ${t.innerBorder} flex flex-col items-center justify-between text-center px-6 sm:px-10 py-6 sm:py-8`}>
-                          <DiplomaBackground background={background} />
+                          <CertificateBackground background={background} />
 
+                          {/* Esquinas decorativas, estilo pixel */}
                           <span className={`absolute top-2 left-2 text-lg ${t.corner} z-10`} aria-hidden="true">✦</span>
                           <span className={`absolute top-2 right-2 text-lg ${t.corner} z-10`} aria-hidden="true">✦</span>
                           <span className={`absolute bottom-2 left-2 text-lg ${t.corner} z-10`} aria-hidden="true">✦</span>
@@ -668,10 +769,10 @@ export default function Diplomas() {
                               className={`font-semibold ${t.text} mb-4 sm:mb-6`}
                               style={textStyle(BASE_PX.title)}
                             >
-                              {diplomaTitle}
+                              Certificado de {typeCfg.label}
                             </h2>
                             <p className="text-deep/60 mb-1" style={textStyle(BASE_PX.intro)}>
-                              Se otorga el presente diploma a
+                              Se certifica que
                             </p>
                             <p
                               className="text-deep font-semibold mb-3 sm:mb-5 break-words"
@@ -679,19 +780,31 @@ export default function Diplomas() {
                             >
                               {name}
                             </p>
-                            <p
-                              className="text-deep/70 max-w-md mx-auto leading-relaxed"
-                              style={textStyle(BASE_PX.reason)}
-                            >
-                              {reason}
-                            </p>
+                            {customBody.trim() ? (
+                              <p className="text-deep/70 max-w-md mx-auto leading-relaxed" style={textStyle(BASE_PX.body)}>
+                                {customBody}
+                              </p>
+                            ) : (
+                              <p className="text-deep/70 max-w-md mx-auto leading-relaxed" style={textStyle(BASE_PX.body)}>
+                                {typeCfg.verb}{' '}
+                                <span className="font-semibold text-deep">
+                                  "{courseName || 'el curso indicado'}"
+                                </span>
+                                {hours ? `, con una duración de ${hours} horas académicas` : ''}.
+                              </p>
+                            )}
                           </div>
 
                           <div className="w-full flex items-end justify-between gap-6 mt-4 relative z-10">
                             <div className="flex-1 text-left">
                               {dateLabel && (
-                                <p className="text-deep/50" style={textStyle(BASE_PX.date)}>
+                                <p className="text-deep/50 mb-1" style={textStyle(BASE_PX.footer)}>
                                   {dateLabel}
+                                </p>
+                              )}
+                              {includeCode && (
+                                <p className="text-deep/50" style={textStyle(BASE_PX.footer)}>
+                                  N.º {buildCode(codePrefix, i)}
                                 </p>
                               )}
                             </div>
@@ -746,7 +859,9 @@ export default function Diplomas() {
         </PageContainer>
       </section>
 
-      <Footer />
+      <div className="no-print">
+        <Footer />
+      </div>
     </div>
   )
 }
