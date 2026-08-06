@@ -40,9 +40,20 @@ export const SECTIONS = [
     accent: 'mint',
     description: 'Generadores de sopas de letras y crucigramas, listos para imprimir.',
     cta: 'Entrar a la misión',
+
     tools: [
-      { label: 'Sopa de letras', href: '#/laboratorio/sopa-de-letras', icon: '🔤' },
-      { label: 'Crucigramas', href: '#/laboratorio/crucigramas', icon: '✏️' },
+      { id: 'sopa-de-letras', label: 'Sopa de letras', icon: '🔤', href: '#/laboratorio/sopa-de-letras', active: true },
+      { id: 'crucigramas', label: 'Crucigramas', icon: '✏️', href: '#/laboratorio/crucigramas', active: true },
+      { id: 'flashcards', label: 'Flashcards', icon: '🃏', href: '#/laboratorio/flashcards', active: true },
+      { id: 'bingo', label: 'Bingo', icon: '🎱', href: '#/laboratorio/bingo', active: true },
+      { id: 'dados', label: 'Dados', icon: '🎲', href: '#/laboratorio/dados', active: true },
+      { id: 'diplomas', label: 'Diplomas', icon: '🎓', active: false },
+      { id: 'certificados', label: 'Certificados', icon: '📜', active: false },
+      { id: 'horarios', label: 'Horarios', icon: '🗓️', active: false },
+      { id: 'rubricas', label: 'Rúbricas', icon: '📊', active: false },
+      { id: 'planificaciones', label: 'Planificaciones', icon: '🗂️', active: false },
+      { id: 'calendarios', label: 'Calendarios', icon: '📅', active: false },
+      { id: 'ruleta', label: 'Ruleta', icon: '🎡', active: false },
     ],
   },
   {
@@ -56,7 +67,15 @@ export const SECTIONS = [
     description: 'Dos prototipos de IA para armar tu clase — sugerencias simuladas, marcadas como tal.',
     cta: 'Ver prototipos',
     tools: [
-      { label: 'Construye mi clase', href: '#/observatorio/construye-mi-clase', icon: '🧱' },
+      { id: 'construye-mi-clase', label: 'Construye mi clase', icon: '🌌', href: '#/observatorio/construye-mi-clase', desc: 'Un lienzo de bloques — objetivo, actividad, evaluación — que arrastras y editas.', active: true },
+      { id: 'conversacion', label: 'Modo conversación', icon: '✨', desc: 'Auri hace preguntas cortas, como un diseñador instruccional, hasta armar tu clase.', active: false },
+      { id: 'constructor-inteligente', label: 'Constructor inteligente', icon: '🧩', desc: 'Escribes un tema y aparecen botones: crucigrama, flashcards, bingo, quiz...', active: false },
+      { id: 'ia-visual', label: 'IA visual', icon: '🖼️', desc: 'Subes una foto de una hoja y Auri la moderniza, traduce o adapta.', active: false },
+      { id: 'adaptador', label: 'Adaptador NEE', icon: '🌎', desc: 'Un botón que adapta tamaño, contraste y actividades para necesidades específicas.', active: false },
+      { id: 'pregunta-auri', label: 'Pregúntale a Auri', icon: '🐧', desc: 'No un chat largo — una conversación corta, siempre con opciones para elegir.', active: false },
+      { id: 'inspiracion', label: 'Inspiración', icon: '⭐', desc: 'Auri trae cinco ideas relacionadas con tu materia, sin que pidas nada.', active: false },
+      { id: 'estilo', label: 'IA que conoce tu estilo', icon: '🤖', desc: 'Aprende cómo das clase y genera siguiendo tu forma de enseñar.', active: false },
+      { id: 'mapa-aprendizaje', label: 'El mapa del aprendizaje', icon: '🗺️', desc: 'Los recursos organizados como un mapa de constelaciones, no como carpetas.', active: false },
     ],
   },
   {
@@ -110,7 +129,7 @@ export function navbarMenu(sections = SECTIONS) {
   return sections.map((s) =>
     s.status === 'sealed'
       ? { label: s.label, icon: s.icon, comingSoon: true }
-      : { label: s.label, href: s.href, icon: s.icon, children: s.tools }
+      : { label: s.label, href: s.href, icon: s.icon, children: (s.tools || []).filter((t) => t.active) }
   )
 }
 
