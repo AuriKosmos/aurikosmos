@@ -155,7 +155,7 @@ export function AuriIntro({ onEnter }) {
           <div className="text-left bg-white/5 border-2 border-white/20 p-5 mb-8">
             <div className="flex items-start gap-3">
              <img
-  src="./public/auri-hablando.gif"
+  src="./auri-hablando.gif"
   alt=""
   aria-hidden="true"
   className="w-20 h-20 shrink-0 object-contain -mt-2"

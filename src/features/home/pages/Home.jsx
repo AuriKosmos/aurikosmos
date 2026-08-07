@@ -111,11 +111,11 @@ function Particles({ count = PARTICLE_COUNT, className = '' }) {
 function Porthole({ src, alt, size }) {
   return (
     <div className={`${size} relative rounded-full bg-white overflow-hidden border-4 border-white shadow-pixel`}>
-     <img
-  src={src}
-  alt={alt}
-  className="w-[80%] h-[80%] object-contain relative z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-/>
+      <img
+        src={src}
+        alt={alt}
+        className="w-[80%] h-[80%] object-contain relative z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
       {/* sombra bajo los pies */}
       <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-2/3 h-3 bg-black/20 rounded-full blur-sm" />
     </div>
@@ -125,7 +125,7 @@ function Porthole({ src, alt, size }) {
 function Constellation() {
   const [angleOffset, setAngleOffset] = useState(0)
   const [paused, setPaused] = useState(false)
-  
+
   const [activePlanet, setActivePlanet] = useState(null)
 
   useEffect(() => {
@@ -175,7 +175,7 @@ function Constellation() {
     <g>
       {/* Halo de luz morada suave */}
       <circle cx={CX} cy={CY} r="95" fill="var(--c-brand)" opacity="0.25" filter="url(#kosmos-glow)" />
-      
+
       {/* Anillos tecnológicos rotando en lugar de rayos */}
       <g opacity="0.7">
         <animateTransform attributeName="transform" type="rotate" from={`0 ${CX} ${CY}`} to={`360 ${CX} ${CY}`} dur="30s" repeatCount="indefinite" />
@@ -187,27 +187,27 @@ function Constellation() {
       <circle cx={CX} cy={CY} r="48" fill="var(--c-deep)" stroke="var(--c-brand)" strokeWidth="4">
         <animate attributeName="r" values="48;51;48" dur="4s" repeatCount="indefinite" />
       </circle>
-      
+
       {/* Auri en el centro */}
 
     </g>
   ), [])
 
   // 3. MATEMÁTICA 3D Y DATOS
- const planetsData = ROADMAP.map((item, i) => {
+  const planetsData = ROADMAP.map((item, i) => {
     const orbit = ORBIT_TIERS[item.tier]
     const rad = ((item.angle + angleOffset * orbit.speed) * Math.PI) / 180
-    
+
     const x = CX + orbit.rx * Math.cos(rad)
     const y = CY + orbit.ry * Math.sin(rad)
-    const depth = Math.sin(rad) 
-    
+    const depth = Math.sin(rad)
+
     const baseScale = 1 + (depth * 0.25)
-    
+
     return {
       ...item,
       index: i, x, y, baseScale, depth,
-      isBack: depth < 0, 
+      isBack: depth < 0,
       color: PLANET_PALETTE[i % PLANET_PALETTE.length],
       variant: PLANET_VARIANTS[i % PLANET_VARIANTS.length],
       img: PLANET_IMAGES[i % PLANET_IMAGES.length], // 👈 nuevo
@@ -223,10 +223,10 @@ function Constellation() {
     const r = PLANET_RADIUS
     const clipId = `planet-clip-${p.index}`
     const isHovered = activePlanet === p.label
-    
+
     const finalScale = isHovered ? p.baseScale * 1.15 : p.baseScale
     const finalOpacity = isHovered ? 1 : (0.65 + (p.depth * 0.35))
-    const labelDy = p.isBack ? -48 : 56 
+    const labelDy = p.isBack ? -48 : 56
 
     return (
       <g
@@ -259,7 +259,7 @@ function Constellation() {
           <clipPath id={clipId}>
             <circle cx="0" cy="0" r={r} />
           </clipPath>
-<circle cx="0" cy="0" r={r * 1.15} fill="var(--c-sky)" opacity="0.22" filter="url(#kosmos-glow)" />
+          <circle cx="0" cy="0" r={r * 1.15} fill="var(--c-sky)" opacity="0.22" filter="url(#kosmos-glow)" />
 
           <g clipPath={`url(#${clipId})`}>
             <image
@@ -272,17 +272,17 @@ function Constellation() {
             />
           </g>
 
-<text x="0" y={labelDy} textAnchor="middle" fill="#FFFFFF" fontSize="11" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="0.5">
+          <text x="0" y={labelDy} textAnchor="middle" fill="#FFFFFF" fontSize="11" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="0.5">
             {p.label}
           </text>
         </g>
 
         {isHovered && (
-          <foreignObject 
-            x="-90" 
+          <foreignObject
+            x="-90"
             y={p.isBack ? -100 : 85}
-            width="180" 
-            height="100" 
+            width="180"
+            height="100"
             className="overflow-visible pointer-events-none"
           >
             <div className="bg-white border-2 border-deep rounded-sm px-3 py-2 shadow-pixel w-full flex items-center justify-center mx-auto box-border">
@@ -296,7 +296,7 @@ function Constellation() {
     )
   }
 
- return (
+  return (
     <svg
       viewBox="0 0 820 620"
       className="w-full h-auto min-w-[600px] sm:min-w-0 max-w-4xl mx-auto"
@@ -335,7 +335,7 @@ function useTilt(maxDeg = 8) {
     const py = (e.clientY - rect.top) / rect.height
     const rotateY = (px - 0.5) * maxDeg * 2
     const rotateX = (0.5 - py) * maxDeg * 2
-    
+
     // Asignamos el estilo directamente al nodo, bypasseando el motor de React (0 latencia)
     ref.current.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
   }
@@ -377,7 +377,7 @@ function Reveal({ children, className = '', delayMs = 0 }) {
     }
     const el = ref.current
     if (!el) return undefined
-    
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -394,9 +394,8 @@ function Reveal({ children, className = '', delayMs = 0 }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      } ${className}`}
+      className={`transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        } ${className}`}
       style={{ transitionDelay: visible ? `${delayMs}ms` : '0ms' }}
     >
       {children}
@@ -443,109 +442,109 @@ export default function Home() {
         <Particles count={26} />
 
         <Reveal>
-        <PageContainer className="relative z-10 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="font-label text-[10px] tracking-widest text-white mb-5 bg-ember inline-block px-2 py-1 border-2 border-white">
-              CONOCÉ A AURI
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl leading-[1.15] text-white font-semibold mb-6">
-              Estoy explorando nuevas formas de enseñar.
-            </h1>
-            <p className="text-lg text-white/70 max-w-md mb-6">
-              Soy Auri, un pingüino astronauta con una mochila llena de herramientas para docentes.
-              Cada planeta del kosmos guarda una forma distinta de crear una clase.
-            </p>
-            <div className="max-w-md mb-8">
-              <AuriNote line={heroLine} />
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <div className="w-48">
-                <PixelButton href="#mapa" variant="accent">Ver el mapa</PixelButton>
+          <PageContainer className="relative z-10 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="font-label text-[10px] tracking-widest text-white mb-5 bg-ember inline-block px-2 py-1 border-2 border-white">
+                CONOCÉ A AURI
+              </p>
+              <h1 className="font-display text-4xl sm:text-5xl leading-[1.15] text-white font-semibold mb-6">
+                Estoy explorando nuevas formas de enseñar.
+              </h1>
+              <p className="text-lg text-white/70 max-w-md mb-6">
+                Soy Auri, un pingüino astronauta con una mochila llena de herramientas para docentes.
+                Cada planeta del kosmos guarda una forma distinta de crear una clase.
+              </p>
+              <div className="max-w-md mb-8">
+                <AuriNote line={heroLine} />
               </div>
-              <div className="w-48">
-                <PixelButton href="#misiones" variant="secondary">Misiones disponibles</PixelButton>
+              <div className="flex flex-wrap gap-4">
+                <div className="w-48">
+                  <PixelButton href="#mapa" variant="accent">Ver el mapa</PixelButton>
+                </div>
+                <div className="w-48">
+                  <PixelButton href="#misiones" variant="secondary">Misiones disponibles</PixelButton>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex justify-center relative z-10">
-            <TiltCard liftClassName="hover:-translate-y-0">
-              <Porthole
-                src="./auri-hablando.gif"
-                alt="Auri, el pingüino astronauta mascota de Auri Kosmos, saludando"
-                size="w-64 h-64 sm:w-72 sm:h-72"
-              />
-            </TiltCard>
-          </div>
-        </PageContainer>
+            <div className="flex justify-center relative z-10">
+              <TiltCard liftClassName="hover:-translate-y-0">
+                <Porthole
+                  src="./auri-hablando.gif"
+                  alt="Auri, el pingüino astronauta mascota de Auri Kosmos, saludando"
+                  size="w-64 h-64 sm:w-72 sm:h-72"
+                />
+              </TiltCard>
+            </div>
+          </PageContainer>
         </Reveal>
       </section>
 
       <section id="mapa" className="relative overflow-hidden bg-deep bg-kosmos-glow py-24">
         <Particles count={32} />
         <Reveal>
-        <PageContainer className="relative z-10">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4 text-center sm:text-left">
-            <Porthole
-              src="./auri-procesando.png"
-              alt="Auri pensando, con un globo de diálogo de puntos suspensivos"
-              size="w-24 h-24 shrink-0"
-              ringClassName="border-nova"
-            />
-            <div>
-              <p className="font-label text-[10px] tracking-widest text-sky mb-5">MAPA DEL KOSMOS</p>
-              <h2 className="font-display text-3xl text-white font-semibold max-w-xl">
-                No es una tienda. Es un mapa que un docente explora para ahorrar tiempo.
-              </h2>
+          <PageContainer className="relative z-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4 text-center sm:text-left">
+              <Porthole
+                src="./auri-procesando.png"
+                alt="Auri pensando, con un globo de diálogo de puntos suspensivos"
+                size="w-24 h-24 shrink-0"
+                ringClassName="border-nova"
+              />
+              <div>
+                <p className="font-label text-[10px] tracking-widest text-sky mb-5">MAPA DEL KOSMOS</p>
+                <h2 className="font-display text-3xl text-white font-semibold max-w-xl">
+                  No es una tienda. Es un mapa que un docente explora para ahorrar tiempo.
+                </h2>
+              </div>
             </div>
-          </div>
-          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
-            <Constellation />
-          </div>
-        </PageContainer>
+            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
+              <Constellation />
+            </div>
+          </PageContainer>
         </Reveal>
       </section>
 
       <section id="misiones" className="py-20">
         <Reveal>
-        <PageContainer>
-          <p className="font-label text-[10px] tracking-widest text-nova mb-3 text-center">
-            MISIONES DISPONIBLES
-          </p>
-          <h2 className="font-display text-2xl sm:text-3xl text-deep text-center font-medium mb-10 max-w-2xl mx-auto">
-            Dos planetas ya están despiertos. El resto se va a ir abriendo.
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {MISSIONS.map((m, i) => (
-              <Reveal key={m.title} delayMs={i * 90}>
-                <MissionCard mission={m} />
-              </Reveal>
-            ))}
-          </div>
-        </PageContainer>
+          <PageContainer>
+            <p className="font-label text-[10px] tracking-widest text-nova mb-3 text-center">
+              MISIONES DISPONIBLES
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl text-deep text-center font-medium mb-10 max-w-2xl mx-auto">
+              Dos planetas ya están despiertos. El resto se va a ir abriendo.
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {MISSIONS.map((m, i) => (
+                <Reveal key={m.title} delayMs={i * 90}>
+                  <MissionCard mission={m} />
+                </Reveal>
+              ))}
+            </div>
+          </PageContainer>
         </Reveal>
       </section>
 
       <section id="meta" className="bg-deep py-20 relative overflow-hidden">
         <Particles count={20} />
         <Reveal>
-        <PageContainer size="sm" className="text-center relative z-10">
-          <div className="flex justify-center mb-6">
-            <Porthole
-              src="./auri-celebrando.png"
-              alt="Auri festejando con los brazos arriba"
-              size="w-28 h-28"
-              ringClassName="border-ember"
-            />
-          </div>
-          <p className="font-label text-[10px] tracking-widest text-sky mb-5">PRÓXIMA MISIÓN COLECTIVA</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-white font-semibold mb-4">
-            30 recursos <span className="text-ember">antes del 30 de septiembre</span>
-          </h2>
-          <p className="text-white/70">
-            No depende de las ventas. Depende solo de nuestra constancia.
-          </p>
-        </PageContainer>
+          <PageContainer size="sm" className="text-center relative z-10">
+            <div className="flex justify-center mb-6">
+              <Porthole
+                src="./auri-celebrando.png"
+                alt="Auri festejando con los brazos arriba"
+                size="w-28 h-28"
+                ringClassName="border-ember"
+              />
+            </div>
+            <p className="font-label text-[10px] tracking-widest text-sky mb-5">PRÓXIMA MISIÓN COLECTIVA</p>
+            <h2 className="font-display text-4xl sm:text-5xl text-white font-semibold mb-4">
+              30 recursos <span className="text-ember">antes del 30 de septiembre</span>
+            </h2>
+            <p className="text-white/70">
+              No depende de las ventas. Depende solo de nuestra constancia.
+            </p>
+          </PageContainer>
         </Reveal>
       </section>
 
