@@ -486,7 +486,7 @@ export default function Home() {
           <PageContainer className="relative z-10">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4 text-center sm:text-left">
               <Porthole
-                src="./auri-procesando.png"
+                src="./auri-procesando.gif"
                 alt="Auri pensando, con un globo de diálogo de puntos suspensivos"
                 size="w-24 h-24 shrink-0"
                 ringClassName="border-nova"
@@ -531,7 +531,7 @@ export default function Home() {
           <PageContainer size="sm" className="text-center relative z-10">
             <div className="flex justify-center mb-6">
               <Porthole
-                src="./auri-celebrando.png"
+                src="./auri-celebrando.gif"
                 alt="Auri festejando con los brazos arriba"
                 size="w-28 h-28"
                 ringClassName="border-ember"
