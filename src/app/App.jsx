@@ -7,6 +7,7 @@ import Flashcards from '../features/laboratorio/pages/Flashcards'
 import Dados from '../features/laboratorio/pages/Dados.jsx'
 import Diplomas from '../features/laboratorio/pages/Diplomas.jsx'
 import Certificados from '../features/laboratorio/pages/Certificados.jsx'
+import Horarios from '../features/laboratorio/pages/Horarios.jsx'
 import Bingo from '../features/laboratorio/pages/Bingo.jsx'
 import Observatorio from '../features/observatorio/pages/Observatorio.jsx'
 import ConstruyeMiClase from '../features/observatorio/pages/ConstruyeMiClase.jsx'
@@ -36,6 +37,7 @@ export default function App() {
   if (route.startsWith('#/laboratorio/bingo')) return <Bingo />
   if (route.startsWith('#/laboratorio/diplomas'))return <Diplomas/>
   if (route.startsWith('#/laboratorio/certificados'))return <Certificados/>
+  if (route.startsWith('#/laboratorio/horarios'))return <Horarios/>
   if (route.startsWith('#/laboratorio/dados')) return <Dados />
   if (route.startsWith('#/laboratorio')) return <Laboratorio />
   if (route.startsWith('#/observatorio/construye-mi-clase')) return <ConstruyeMiClase />

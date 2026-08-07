@@ -63,9 +63,10 @@ function BlockCard({ block, index, total, tema, resources, onMove, onRemove, onC
 
         <button
           onClick={() => onToggleSuggestions(block.id)}
-          className="text-xs font-label tracking-wide text-brand hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-label tracking-wide text-brand hover:underline"
         >
-          🐧 {block.suggestionsOpen ? 'ocultar ideas' : 'auri sugiere'}
+          <img src="./auri-cara.png" alt="" className="w-4 h-4 object-contain" aria-hidden="true" />
+          {block.suggestionsOpen ? 'ocultar ideas' : 'auri sugiere'}
         </button>
 
         {block.suggestionsOpen && (

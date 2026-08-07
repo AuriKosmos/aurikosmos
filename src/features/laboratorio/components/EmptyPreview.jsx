@@ -4,9 +4,9 @@
  */
 export function EmptyPreview({ children }) {
   return (
-    <div className="border-2 border-dashed border-deep/20 p-16 text-center text-deep/40 flex flex-col items-center gap-3">
-      <span className="text-3xl grayscale opacity-60" aria-hidden="true">🐧</span>
-      <p>{children}</p>
+    <div className="border-2 border-dashed border-deep/20 py-10 px-6 text-center text-deep/40 flex flex-col items-center gap-2">
+      <img src="./auri-default.png" alt="" className="w-10 h-10 grayscale opacity-60" aria-hidden="true" />
+      <p className="text-sm">{children}</p>
     </div>
   )
 }

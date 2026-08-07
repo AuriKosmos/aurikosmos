@@ -311,8 +311,15 @@ function Constellation() {
       {coreLayer}
       {frontPlanets.map(renderPlanet)}
 
-      {/* Texto y pingüino siempre visibles, por encima de todo */}
-      <text x={CX} y={CY + 8} textAnchor="middle" fontSize="26">🐧</text>
+      {/* Texto y carita de Auri siempre visibles, por encima de todo */}
+      <image
+        href="./auri-cara.png"
+        x={CX - 22}
+        y={CY - 22}
+        width="44"
+        height="44"
+        style={{ imageRendering: 'pixelated' }}
+      />
       <text x={CX} y={CY + 76} textAnchor="middle" fill="#FFFFFF" fontSize="12" fontFamily="'Pixelify Sans', sans-serif" fontWeight="600" letterSpacing="1">
         AURI KOSMOS
       </text>

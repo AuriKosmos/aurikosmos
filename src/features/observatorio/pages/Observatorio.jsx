@@ -5,6 +5,21 @@ import { SECTIONS } from '../../../config/sections.js'
 // esta página y el menú se desincronicen cuando se active una idea nueva.
 const IDEAS = SECTIONS.find((s) => s.id === 'observatorio')?.tools ?? []
 
+function IdeaIcon({ icon, grayscale }) {
+  const isImage = typeof icon === 'string' && icon.startsWith('/')
+  if (isImage) {
+    return (
+      <img
+        src={icon}
+        alt=""
+        className={`w-10 h-10 mb-3 object-contain ${grayscale ? 'grayscale' : ''}`}
+        aria-hidden="true"
+      />
+    )
+  }
+  return <span className={`text-4xl mb-3 ${grayscale ? 'grayscale' : ''}`}>{icon}</span>
+}
+
 function IdeaCard({ idea }) {
   if (idea.active) {
     return (
@@ -13,7 +28,7 @@ function IdeaCard({ idea }) {
         className="group relative bg-deep border-2 border-sun p-5 shadow-pixel hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-pixel-sm transition-all flex flex-col items-center text-center"
       >
         <span className="absolute top-3 right-3 w-2 h-2 bg-sun animate-pulse" aria-hidden="true" />
-        <span className="text-4xl mb-3">{idea.icon}</span>
+        <IdeaIcon icon={idea.icon} />
         <h3 className="font-display font-semibold text-white mb-2">{idea.label}</h3>
         <p className="text-xs text-white/60 mb-3 leading-relaxed">{idea.desc}</p>
         <span className="font-label text-[9px] tracking-wide bg-sun/20 border border-sun px-2 py-1 text-sun">
@@ -25,7 +40,7 @@ function IdeaCard({ idea }) {
 
   return (
     <div className="bg-deep/40 border-2 border-dashed border-white/10 p-5 flex flex-col items-center text-center opacity-70">
-      <span className="text-4xl mb-3 grayscale">{idea.icon}</span>
+      <IdeaIcon icon={idea.icon} grayscale />
       <h3 className="font-display font-semibold text-white/70 mb-2">{idea.label}</h3>
       <p className="text-xs text-white/40 mb-3 leading-relaxed">{idea.desc}</p>
       <span className="font-label text-[9px] tracking-wide bg-white/5 border border-white/20 px-2 py-1 text-white/40">

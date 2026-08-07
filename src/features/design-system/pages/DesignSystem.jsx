@@ -100,7 +100,7 @@ export default function DesignSystem() {
     <div className="min-h-screen bg-white">
       <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
         <a href="#/" className="flex items-center gap-2">
-          <span className="text-2xl">🐧</span>
+          <img src="./auri-cara.png" alt="" className="w-8 h-8 object-contain" aria-hidden="true" />
           <span className="font-display font-semibold text-xl text-deep">Auri Kosmos</span>
         </a>
         <span className="font-label text-[10px] tracking-wide text-deep/50 bg-cream border-2 border-deep px-3 py-1.5">
@@ -219,7 +219,11 @@ export default function DesignSystem() {
           </PixelButton>
 
           {modalOpen && (
-            <PixelModal title="EJEMPLO" icon="🐧" onClose={() => setModalOpen(false)}>
+            <PixelModal
+              title="EJEMPLO"
+              icon={<img src="/auri-cara.png" alt="" className="w-3.5 h-3.5 inline object-contain" aria-hidden="true" />}
+              onClose={() => setModalOpen(false)}
+            >
               <p className="text-deep/70">Contenido de ejemplo dentro de PixelModal.</p>
               <PixelButton variant="primary" onClick={() => setModalOpen(false)}>
                 Cerrar
@@ -237,9 +241,12 @@ export default function DesignSystem() {
         </Section>
 
         {/* ============ components/auri ============ */}
-        <p className="font-label text-[9px] tracking-widest text-brand/70 mb-6">🐧 COMPONENTS/AURI</p>
+        <p className="font-label text-[9px] tracking-widest text-brand/70 mb-6 flex items-center gap-1.5">
+          <img src="/auri-cara.png" alt="" className="w-3.5 h-3.5 object-contain" aria-hidden="true" />
+          COMPONENTS/AURI
+        </p>
 
-        <Section title="🐧 AuriNote" description="Aviso suave post-generación. Nunca para errores duros.">
+        <Section title="AuriNote" description="Aviso suave post-generación. Nunca para errores duros.">
           <div className="w-96">
             <AuriNote line="Qué bonita idea." />
           </div>

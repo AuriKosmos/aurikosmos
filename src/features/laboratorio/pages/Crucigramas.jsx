@@ -174,61 +174,52 @@ export default function Crucigramas() {
                   </button>
                 </div>
 
-                <div className="hidden sm:flex gap-2 mb-1.5 px-0.5">
-                  <span className="flex-1 font-label text-[8px] text-deep/40">PALABRA</span>
-                  <span className="flex-[2] font-label text-[8px] text-deep/40">PISTA (OPCIONAL)</span>
-                </div>
-                <div className="space-y-3 sm:space-y-2">
+                <div className="space-y-2">
                   {rows.map((row, i) => (
                     <div
                       key={row.id}
-                      className="flex flex-col gap-1.5 pb-3 border-b border-dashed border-deep/10 sm:flex-row sm:items-center sm:pb-0 sm:border-0"
+                      className="flex flex-wrap items-center gap-1.5 pb-2 border-b border-dashed border-deep/10"
                     >
-                      <div className="flex gap-1.5 items-center">
-                        <input
-                          type="text"
-                          value={row.word}
-                          onChange={(e) => updateRow(row.id, 'word', e.target.value)}
-                          placeholder={`PALABRA ${i + 1}`}
-                          className="flex-1 min-w-0 border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white"
-                        />
-                        <span className="hidden sm:inline text-deep/30 font-label text-xs shrink-0">—</span>
-                      </div>
-                      <div className="flex gap-1.5 items-center">
-                        <input
-                          type="text"
-                          value={row.clue}
-                          onChange={(e) => updateRow(row.id, 'clue', e.target.value)}
-                          placeholder="pista"
-                          className="flex-1 sm:flex-[2] min-w-0 border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white"
-                        />
-                        <div className="flex items-center gap-1 shrink-0">
-                          <div className="flex flex-col shrink-0">
-                            <button
-                              onClick={() => moveRow(row.id, -1)}
-                              disabled={i === 0}
-                              className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
-                              aria-label={`Subir palabra ${i + 1}`}
-                            >
-                              ▲
-                            </button>
-                            <button
-                              onClick={() => moveRow(row.id, 1)}
-                              disabled={i === rows.length - 1}
-                              className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
-                              aria-label={`Bajar palabra ${i + 1}`}
-                            >
-                              ▼
-                            </button>
-                          </div>
+                      <input
+                        type="text"
+                        value={row.word}
+                        onChange={(e) => updateRow(row.id, 'word', e.target.value)}
+                        placeholder={`PALABRA ${i + 1}`}
+                        className="basis-[90px] flex-shrink-0 min-w-[70px] border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white"
+                      />
+                      <input
+                        type="text"
+                        value={row.clue}
+                        onChange={(e) => updateRow(row.id, 'clue', e.target.value)}
+                        placeholder="pista"
+                        className="flex-1 min-w-[100px] border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      />
+                      <div className="flex items-center gap-1 shrink-0">
+                        <div className="flex flex-col shrink-0">
                           <button
-                            onClick={() => removeRow(row.id)}
-                            className="shrink-0 w-7 h-7 flex items-center justify-center text-deep/40 hover:text-blossom hover:border-blossom border-2 border-transparent"
-                            aria-label={`Eliminar palabra ${i + 1}`}
+                            onClick={() => moveRow(row.id, -1)}
+                            disabled={i === 0}
+                            className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
+                            aria-label={`Subir palabra ${i + 1}`}
                           >
-                            ✕
+                            ▲
+                          </button>
+                          <button
+                            onClick={() => moveRow(row.id, 1)}
+                            disabled={i === rows.length - 1}
+                            className="w-5 h-3.5 flex items-center justify-center text-deep/40 hover:text-brand disabled:opacity-20 disabled:hover:text-deep/40 leading-none text-[10px]"
+                            aria-label={`Bajar palabra ${i + 1}`}
+                          >
+                            ▼
                           </button>
                         </div>
+                        <button
+                          onClick={() => removeRow(row.id)}
+                          className="shrink-0 w-7 h-7 flex items-center justify-center text-deep/40 hover:text-blossom hover:border-blossom border-2 border-transparent"
+                          aria-label={`Eliminar palabra ${i + 1}`}
+                        >
+                          ✕
+                        </button>
                       </div>
                     </div>
                   ))}
