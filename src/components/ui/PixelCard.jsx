@@ -18,7 +18,7 @@ const ACCENTS = {
 export function PixelCard({ accent = null, children, className = '', ...props }) {
   return (
     <div
-      className={`bg-white border-2 border-deep shadow-pixel-sm p-5 ${accent ? ACCENTS[accent] : ''} ${className}`}
+      className={`bg-white border-2 border-deep shadow-pixel-sm p-5 dark:bg-deep dark:border-cream/30 dark:shadow-none ${accent ? ACCENTS[accent] : ''} ${className}`}
       {...props}
     >
       {children}

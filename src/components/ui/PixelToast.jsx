@@ -26,14 +26,14 @@ export function PixelToast({ message, variant = 'brand', onClose, duration }) {
   return (
     <div
       role="status"
-      className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-2 border-deep border-l-8 shadow-pixel px-4 py-3 max-w-xs ${VARIANTS[variant]}`}
+      className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white border-2 border-deep border-l-8 shadow-pixel px-4 py-3 max-w-xs dark:bg-deep dark:border-cream/30 ${VARIANTS[variant]}`}
     >
       <img src="./auri-cara.png" alt="" className="w-7 h-7 shrink-0 object-contain" aria-hidden="true" />
-      <p className="text-sm text-deep flex-1">{message}</p>
+      <p className="text-sm text-deep dark:text-cream flex-1">{message}</p>
       <button
         onClick={onClose}
         aria-label="Cerrar notificación"
-        className="text-deep/40 hover:text-deep shrink-0"
+        className="text-deep/40 hover:text-deep dark:text-cream/40 dark:hover:text-cream shrink-0"
       >
         ✕
       </button>

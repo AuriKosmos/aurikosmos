@@ -348,7 +348,7 @@ function useTilt(maxDeg = 8) {
   }
 
   function handleMouseLeave() {
-    if (!ref.current) returnö
+    if (!ref.current) return
     ref.current.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)'
   }
 
@@ -424,12 +424,12 @@ function MissionCard({ mission }) {
             {mission.status}
           </PixelBadge>
         </div>
-        <h3 className="font-display font-semibold text-deep text-lg mb-1">{mission.title}</h3>
-        <p className="text-sm text-deep/70 leading-relaxed mb-4 flex-1">{mission.desc}</p>
+        <h3 className="font-display font-semibold text-deep text-lg mb-1 dark:text-cream">{mission.title}</h3>
+        <p className="text-sm text-deep/70 leading-relaxed mb-4 flex-1 dark:text-cream/70">{mission.desc}</p>
         {mission.href ? (
           <PixelButton href={mission.href} variant="secondary">{mission.cta}</PixelButton>
         ) : (
-          <p className="font-label text-[9px] tracking-widest text-deep/40">SE ABRE PRÓXIMAMENTE</p>
+          <p className="font-label text-[9px] tracking-widest text-deep/40 dark:text-cream/40">SE ABRE PRÓXIMAMENTE</p>
         )}
       </PixelCard>
     </TiltCard>
@@ -442,7 +442,7 @@ export default function Home() {
   )
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar links={navbarLinks()} menu={navbarMenu()} />
 
       <section className="relative overflow-hidden bg-deep bg-kosmos-glow">
@@ -518,7 +518,7 @@ export default function Home() {
             <p className="font-label text-[10px] tracking-widest text-nova mb-3 text-center">
               MISIONES DISPONIBLES
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl text-deep text-center font-medium mb-10 max-w-2xl mx-auto">
+            <h2 className="font-display text-2xl sm:text-3xl text-deep text-center font-medium mb-10 max-w-2xl mx-auto dark:text-cream">
               Dos planetas ya están despiertos. El resto se va a ir abriendo.
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

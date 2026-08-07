@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { PageContainer } from './PageContainer.jsx'
+import { PixelThemeToggle } from '../ui/PixelThemeToggle.jsx'
 
 // ============================================================================
 // ICONOS VECTORIALES (SVG)
@@ -192,7 +193,7 @@ function DrawerMenu({ items }) {
 
       {/* Panel lateral (Drawer) - h-[100dvh] para móviles */}
       <div
-        className={`fixed top-0 right-0 h-[100dvh] w-[85vw] max-w-sm bg-white border-l-2 border-deep shadow-pixel z-[101] transform transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed top-0 right-0 h-[100dvh] w-[85vw] max-w-sm bg-white border-l-2 border-deep shadow-pixel z-[101] transform transition-transform duration-300 ease-in-out flex flex-col dark:bg-deep dark:border-cream/30 ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"
@@ -200,16 +201,16 @@ function DrawerMenu({ items }) {
         aria-label="Menú principal"
       >
         {/* Cabecera del Drawer */}
-        <div className="flex items-center justify-between p-4 border-b-2 border-deep bg-cream shrink-0">
-          <span className="font-display font-semibold text-lg text-deep flex items-center gap-2">
+        <div className="flex items-center justify-between p-4 border-b-2 border-deep bg-cream shrink-0 dark:bg-black/30 dark:border-cream/20">
+          <span className="font-display font-semibold text-lg text-deep flex items-center gap-2 dark:text-cream">
             <IconBrandPlanet className="w-5 h-5" /> Explorar
           </span>
           <button
             onClick={() => setOpen(false)}
-            className="p-2 hover:bg-sky/30 border-2 border-transparent hover:border-deep transition-colors"
+            className="p-2 hover:bg-sky/30 border-2 border-transparent hover:border-deep transition-colors dark:hover:border-cream/40"
             aria-label="Cerrar menú"
           >
-            <IconClose className="w-5 h-5 text-deep" />
+            <IconClose className="w-5 h-5 text-deep dark:text-cream" />
           </button>
         </div>
 
@@ -220,15 +221,15 @@ function DrawerMenu({ items }) {
             const isExpanded = expandedGroups[group.label]
 
             return (
-              <div key={group.label} className="border-b border-deep/10 last:border-0">
+              <div key={group.label} className="border-b border-deep/10 last:border-0 dark:border-cream/10">
                 {/* Categoría Principal */}
                 {group.comingSoon ? (
-                  <div className="flex items-center justify-between px-6 py-4 text-deep/40">
+                  <div className="flex items-center justify-between px-6 py-4 text-deep/40 dark:text-cream/40">
                     <span className="flex items-center gap-3 font-semibold text-base">
                       <RenderIcon icon={group.icon} className="w-5 h-5" />
                       {group.label}
                     </span>
-                    <span className="font-label text-[8px] tracking-widest bg-deep/5 px-2 py-1 rounded">PRÓXIMAMENTE</span>
+                    <span className="font-label text-[8px] tracking-widest bg-deep/5 px-2 py-1 rounded dark:bg-cream/10">PRÓXIMAMENTE</span>
                   </div>
                 ) : (
                   <button
@@ -240,16 +241,16 @@ function DrawerMenu({ items }) {
                         setOpen(false)
                       }
                     }}
-                    className="w-full flex items-center justify-between px-6 py-4 hover:bg-cream transition-colors text-left"
+                    className="w-full flex items-center justify-between px-6 py-4 hover:bg-cream transition-colors text-left dark:hover:bg-cream/10"
                     aria-expanded={hasChildren ? isExpanded : undefined}
                   >
-                    <span className="flex items-center gap-3 font-semibold text-base text-deep">
+                    <span className="flex items-center gap-3 font-semibold text-base text-deep dark:text-cream">
                       <RenderIcon icon={group.icon} className="w-5 h-5" />
                       {group.label}
                     </span>
                     {hasChildren && (
                       <IconChevronDown
-                        className={`w-5 h-5 text-deep transition-transform duration-200 ${
+                        className={`w-5 h-5 text-deep dark:text-cream transition-transform duration-200 ${
                           isExpanded ? 'rotate-180' : ''
                         }`}
                       />
@@ -259,14 +260,14 @@ function DrawerMenu({ items }) {
 
                 {/* Sub-elementos (Acordeón) */}
                 {hasChildren && isExpanded && !group.comingSoon && (
-                  <div className="bg-cream/30 pb-3 pt-1 px-4">
-                    <div className="flex flex-col gap-1 border-l-2 border-deep/20 ml-5 pl-4">
+                  <div className="bg-cream/30 pb-3 pt-1 px-4 dark:bg-black/20">
+                    <div className="flex flex-col gap-1 border-l-2 border-deep/20 ml-5 pl-4 dark:border-cream/20">
                       {group.children.map((child) => (
                         <a
                           key={child.label}
                           href={child.href}
                           onClick={() => setOpen(false)}
-                          className="flex items-center gap-3 py-2.5 px-2 text-sm text-deep/80 hover:text-deep hover:bg-cream font-medium transition-colors rounded-sm"
+                          className="flex items-center gap-3 py-2.5 px-2 text-sm text-deep/80 hover:text-deep hover:bg-cream font-medium transition-colors rounded-sm dark:text-cream/80 dark:hover:text-cream dark:hover:bg-cream/10"
                         >
                           <RenderIcon icon={child.icon} className="w-4 h-4 opacity-70" />
                           {child.label}
@@ -290,7 +291,7 @@ function DrawerMenu({ items }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-expanded={open}
-        className="font-label text-[10px] tracking-wide text-deep bg-white border-2 border-deep px-3 py-1.5 hover:bg-sky/30 transition-colors flex items-center gap-1.5"
+        className="font-label text-[10px] tracking-wide text-deep bg-white border-2 border-deep px-3 py-1.5 hover:bg-sky/30 transition-colors flex items-center gap-1.5 dark:bg-deep dark:text-cream dark:border-cream/40 dark:hover:bg-cream/10"
       >
         <IconMenu className="w-4 h-4" />
         MENÚ
@@ -311,7 +312,7 @@ export function Navbar({ backHref, backLabel = 'VOLVER', menu, badge, className 
         'no-print sticky top-0 z-40', // z-40 para que quede por debajo del z-100 del Drawer
         'transition-[transform,background-color,box-shadow] duration-300 ease-out',
         visible ? 'translate-y-0' : '-translate-y-full',
-        scrolled ? 'bg-white/90 backdrop-blur-sm shadow-[0_2px_0_0_rgba(0,0,0,0.08)]' : 'bg-transparent',
+        scrolled ? 'bg-white/90 backdrop-blur-sm shadow-[0_2px_0_0_rgba(0,0,0,0.08)] dark:bg-deep/90 dark:shadow-[0_2px_0_0_rgba(255,255,255,0.08)]' : 'bg-transparent',
         className,
       ].join(' ')}
     >
@@ -325,7 +326,7 @@ export function Navbar({ backHref, backLabel = 'VOLVER', menu, badge, className 
             aria-hidden="true"
             className="w-7 h-7 group-hover:rotate-12 transition-transform"
           />
-          <span className="font-display font-semibold text-xl text-deep">Auri Kosmos</span>
+          <span className="font-display font-semibold text-xl text-deep dark:text-cream">Auri Kosmos</span>
         </a>
 
         {/* ACCIONES (Volver y Menú Lateral) */}
@@ -334,18 +335,20 @@ export function Navbar({ backHref, backLabel = 'VOLVER', menu, badge, className 
           {backHref && (
             <a
               href={backHref}
-              className="font-label flex items-center gap-1.5 text-[10px] tracking-wide text-deep bg-cream border-2 border-deep px-3 py-1.5 hover:bg-sky/30 transition-colors"
+              className="font-label flex items-center gap-1.5 text-[10px] tracking-wide text-deep bg-cream border-2 border-deep px-3 py-1.5 hover:bg-sky/30 transition-colors dark:bg-deep dark:text-cream dark:border-cream/40 dark:hover:bg-cream/10"
             >
               <IconArrowLeft className="w-3.5 h-3.5" />
               {backLabel}
             </a>
           )}
 
+          <PixelThemeToggle />
+
           {/* NUEVO MENÚ LATERAL */}
           {menu && menu.length > 0 && <DrawerMenu items={menu} />}
 
           {badge && (
-            <span className="hidden sm:inline-flex items-center font-label text-[10px] tracking-wide text-deep/50 bg-cream border-2 border-deep px-3 py-1.5">
+            <span className="hidden sm:inline-flex items-center font-label text-[10px] tracking-wide text-deep/50 bg-cream border-2 border-deep px-3 py-1.5 dark:bg-deep dark:text-cream/60 dark:border-cream/40">
               {badge}
             </span>
           )}

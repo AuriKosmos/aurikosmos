@@ -4,8 +4,8 @@
  */
 export function PixelCheckbox({ checked, onChange, children }) {
   return (
-    <label className="flex items-center gap-2.5 text-sm text-deep cursor-pointer select-none group">
-      <span className="relative inline-flex w-5 h-5 border-2 border-deep bg-white shrink-0 group-hover:border-brand transition-colors">
+    <label className="flex items-center gap-2.5 text-sm text-deep dark:text-cream cursor-pointer select-none group">
+      <span className="relative inline-flex w-5 h-5 border-2 border-deep bg-white shrink-0 group-hover:border-brand transition-colors dark:border-cream/40 dark:bg-deep">
         <input
           type="checkbox"
           checked={checked}

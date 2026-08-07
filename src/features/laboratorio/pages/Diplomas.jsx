@@ -339,7 +339,7 @@ export default function Diplomas() {
   })
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       <style>{'@media print { @page { size: landscape; } }'}</style>
 
       <Navbar backHref="#/laboratorio" backLabel="LABORATORIO" />
@@ -348,8 +348,8 @@ export default function Diplomas() {
         <PageContainer>
           <div className="text-center mb-8 sm:mb-10 no-print px-2">
             <p className="font-label text-[10px] tracking-widest text-brand mb-4">🎓 GENERADOR</p>
-            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Diplomas</h1>
-            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base">
+            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3 dark:text-cream">Diplomas</h1>
+            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base dark:text-cream/70">
               Escribe la lista de estudiantes y el motivo del reconocimiento — genera un diploma
               listo para imprimir por cada uno, con su nombre ya puesto.
             </p>
@@ -365,19 +365,19 @@ export default function Diplomas() {
                   value={namesInput}
                   onChange={(e) => setNamesInput(e.target.value)}
                   rows={6}
-                  className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                  className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                   placeholder={'María José Andrade\nCarlos Mendoza'}
                 />
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleLoadExample}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Cargar ejemplo
                   </button>
                   <button
                     onClick={handleClear}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Limpiar
                   </button>
@@ -404,7 +404,7 @@ export default function Diplomas() {
                     type="text"
                     value={diplomaTitle}
                     onChange={(e) => setDiplomaTitle(e.target.value)}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder="Diploma al Mérito"
                   />
                 </PixelField>
@@ -417,7 +417,7 @@ export default function Diplomas() {
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     rows={3}
-                    className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                    className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                   />
                 </PixelField>
               </CollapsibleSection>
@@ -434,7 +434,7 @@ export default function Diplomas() {
                           type="text"
                           value={line.text}
                           onChange={(e) => updateHeaderLine(line.id, e.target.value)}
-                          className="flex-1 border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="flex-1 border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder={
                             i === 0
                               ? 'Ej. Universidad Central del Ecuador'
@@ -457,7 +457,7 @@ export default function Diplomas() {
                       <button
                         type="button"
                         onClick={addHeaderLine}
-                        className="w-full text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                        className="w-full text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                       >
                         + Agregar línea
                       </button>
@@ -484,14 +484,14 @@ export default function Diplomas() {
                       type="text"
                       value={signer1Name}
                       onChange={(e) => setSigner1Name(e.target.value)}
-                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       placeholder="Nombre"
                     />
                     <input
                       type="text"
                       value={signer1Role}
                       onChange={(e) => setSigner1Role(e.target.value)}
-                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       placeholder="Cargo"
                     />
                   </div>
@@ -518,14 +518,14 @@ export default function Diplomas() {
                           type="text"
                           value={signer2Name}
                           onChange={(e) => setSigner2Name(e.target.value)}
-                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder="Nombre"
                         />
                         <input
                           type="text"
                           value={signer2Role}
                           onChange={(e) => setSigner2Role(e.target.value)}
-                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder="Cargo"
                         />
                       </div>
@@ -554,7 +554,7 @@ export default function Diplomas() {
                     type="text"
                     value={dateLabel}
                     onChange={(e) => setDateLabel(e.target.value)}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder="Ej. Quito, agosto de 2026"
                   />
                 </PixelField>
@@ -606,7 +606,7 @@ export default function Diplomas() {
                       <button
                         onClick={() => setPreviewIndex((i) => Math.max(0, i - 1))}
                         disabled={previewIndex === 0}
-                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
+                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream dark:text-cream dark:border-cream/40 dark:bg-deep dark:hover:bg-cream/10"
                         aria-label="Diploma anterior"
                       >
                         ◀
@@ -617,7 +617,7 @@ export default function Diplomas() {
                       <button
                         onClick={() => setPreviewIndex((i) => Math.min(names.length - 1, i + 1))}
                         disabled={previewIndex === names.length - 1}
-                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
+                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream dark:text-cream dark:border-cream/40 dark:bg-deep dark:hover:bg-cream/10"
                         aria-label="Diploma siguiente"
                       >
                         ▶

@@ -136,15 +136,15 @@ export default function Crucigramas() {
   const size = CELL_SIZE[cellSize]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar backHref="#/laboratorio" backLabel="LABORATORIO" />
 
       <section className="pb-24">
         <PageContainer>
           <div className="text-center mb-8 sm:mb-10 no-print px-2">
             <p className="font-label text-[10px] tracking-widest text-brand mb-4">🧩 GENERADOR</p>
-            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Crucigrama</h1>
-            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base">
+            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3 dark:text-cream">Crucigrama</h1>
+            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base dark:text-cream/70">
               Una fila por palabra: la palabra a la izquierda, su pista a la derecha.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function Crucigramas() {
                   />
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex-1 min-w-[140px] text-xs font-medium text-deep border-2 border-deep py-1.5 bg-white hover:bg-cream transition-colors focus:outline-none"
+                    className="flex-1 min-w-[140px] text-xs font-medium text-deep border-2 border-deep py-1.5 bg-white hover:bg-cream transition-colors focus:outline-none dark:text-cream dark:border-cream/40 dark:bg-deep dark:hover:bg-cream/10"
                   >
                     📥 Importar desde Excel
                   </button>
@@ -185,14 +185,14 @@ export default function Crucigramas() {
                         value={row.word}
                         onChange={(e) => updateRow(row.id, 'word', e.target.value)}
                         placeholder={`PALABRA ${i + 1}`}
-                        className="basis-[90px] flex-shrink-0 min-w-[70px] border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white"
+                        className="basis-[90px] flex-shrink-0 min-w-[70px] border-2 border-deep p-2 text-sm font-medium uppercase text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       />
                       <input
                         type="text"
                         value={row.clue}
                         onChange={(e) => updateRow(row.id, 'clue', e.target.value)}
                         placeholder="pista"
-                        className="flex-1 min-w-[100px] border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                        className="flex-1 min-w-[100px] border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       />
                       <div className="flex items-center gap-1 shrink-0">
                         <div className="flex flex-col shrink-0">
@@ -232,13 +232,13 @@ export default function Crucigramas() {
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleLoadExample}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Cargar ejemplo
                   </button>
                   <button
                     onClick={handleClearAll}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Limpiar
                   </button>
@@ -250,7 +250,7 @@ export default function Crucigramas() {
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                  className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                   placeholder="Crucigrama"
                 />
               </PixelField>
@@ -271,7 +271,7 @@ export default function Crucigramas() {
                   type="text"
                   value={extraLabel}
                   onChange={(e) => setExtraLabel(e.target.value)}
-                  className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                  className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                   placeholder="Campo extra (ej. Materia) — opcional"
                 />
               </PixelField>

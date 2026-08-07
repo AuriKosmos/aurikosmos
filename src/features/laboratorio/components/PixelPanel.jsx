@@ -4,8 +4,8 @@
  */
 export function PixelPanel({ title, icon, children, className = '' }) {
   return (
-    <div className={`border-2 border-deep shadow-pixel-sm bg-cream no-print ${className}`}>
-      <div className="flex items-center gap-2 bg-deep px-3 py-2">
+    <div className={`border-2 border-deep shadow-pixel-sm bg-cream no-print dark:bg-deep dark:border-cream/30 dark:shadow-none ${className}`}>
+      <div className="flex items-center gap-2 bg-deep px-3 py-2 dark:bg-black/30">
         <span className="flex gap-1" aria-hidden="true">
           <span className="w-2 h-2 bg-blossom" />
           <span className="w-2 h-2 bg-sun" />

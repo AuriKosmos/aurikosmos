@@ -28,6 +28,12 @@
  *
  * tools: sub-herramientas del planeta (por ejemplo, dentro de Laboratorio
  * están Sopa de letras y Crucigramas). Alimentan los hijos del menú ☰.
+ *
+ * Animación de entrada: toda página de planeta (Laboratorio, Observatorio,
+ * y las que se agreguen) envuelve su contenido con <PlanetEnter> —
+ * ver src/components/layout/PlanetEnter.jsx — para que el fade + slide-in
+ * al aterrizar se sienta igual en todos los planetas. Al crear un planeta
+ * nuevo, copiá ese mismo wrapper en vez de escribir una animación propia.
  */
 export const SECTIONS = [
   {
@@ -49,9 +55,9 @@ export const SECTIONS = [
       { id: 'dados', label: 'Dados', icon: '🎲', href: '#/laboratorio/dados', active: true },
       { id: 'diplomas', label: 'Diplomas', icon: '🎓', href: '#/laboratorio/diplomas', active: true },
       { id: 'certificados', label: 'Certificados', icon: '📜', href: '#/laboratorio/certificados', active: true },
-      { id: 'horarios', label: 'Horarios', icon: '🗓️', active: true },
+      { id: 'horarios', label: 'Horarios', icon: '🗓️', href:'#/laboratorio/horarios', active: true },
       { id: 'rubricas', label: 'Rúbricas', icon: '📊', active: false },
-      { id: 'planificaciones', label: 'Planificaciones', icon: '🗂️', active: false },
+      { id: 'planificaciones', label: 'Planificaciones', icon: '🗂️', href: '#/laboratorio/planificaciones', active: true },
       { id: 'calendarios', label: 'Calendarios', icon: '📅', active: false },
       { id: 'ruleta', label: 'Ruleta', icon: '🎡', active: false },
     ],

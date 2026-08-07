@@ -11,13 +11,13 @@ const VARIANTS = {
   sun: 'bg-sun text-deep',
   blossom: 'bg-blossom text-deep',
   sky: 'bg-sky text-deep',
-  neutral: 'bg-cream text-deep',
+  neutral: 'bg-cream text-deep dark:bg-deep dark:text-cream',
 }
 
 export function PixelBadge({ variant = 'neutral', children, className = '' }) {
   return (
     <span
-      className={`inline-block font-label text-[8px] tracking-widest uppercase border-2 border-deep px-2 py-1 ${VARIANTS[variant]} ${className}`}
+      className={`inline-block font-label text-[8px] tracking-widest uppercase border-2 border-deep dark:border-cream/40 px-2 py-1 ${VARIANTS[variant]} ${className}`}
     >
       {children}
     </span>

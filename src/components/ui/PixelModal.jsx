@@ -14,7 +14,7 @@ export function PixelModal({ title, icon, onClose, children, className = '' }) {
       onClick={onClose}
     >
       <div
-        className={`w-full max-w-md border-2 border-deep shadow-pixel bg-cream ${className}`}
+        className={`w-full max-w-md border-2 border-deep shadow-pixel bg-cream dark:bg-deep dark:border-cream/30 ${className}`}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

@@ -17,7 +17,7 @@ Una plataforma donde la creatividad, la tecnología y la educación se encuentra
 ## 👋 Hola, soy Auri
 
 <p align="center">
-<img src="./public/auri-hablando.png" width="220">
+<img src="./public/auri-hablando.gif" width="220">
 </p>
 
 Soy un pequeño pingüino astronauta que viaja por el Kosmos buscando nuevas formas de ayudar a docentes y estudiantes.
@@ -47,9 +47,9 @@ Cada proyecto es un nuevo planeta dentro del Kosmos.
 
 <p align="center">
 
-<img src="./public/auri-procesando.png" width="180">
+<img src="./public/auri-procesando.gif" width="180">
 
-<img src="./public/auri-celebrando.png" width="180">
+<img src="./public/auri-celebrando.gif" width="180">
 
 </p>
 
@@ -109,7 +109,7 @@ Queremos construir un lugar donde enseñar vuelva a ser emocionante.
 ---
 
 <p align="center">
-<img src="./public/favicon.png" width="70">
+<img src="./public/auri-amor.gif" width="70">
 
 ### Auri Kosmos
 

@@ -49,7 +49,7 @@ export default function Flashcards() {
   const hasContent = cards.some(c => c.front.trim() !== '' || c.back.trim() !== '')
 
   return (
-    <div className="min-h-screen bg-cream/30 flex flex-col">
+    <div className="min-h-screen bg-cream/30 dark:bg-deep flex flex-col">
       
       {/* 🚀 CSS A PRUEBA DE BALAS PARA LA IMPRESORA */}
       <style>{`
@@ -98,8 +98,8 @@ export default function Flashcards() {
         <PageContainer>
           <div className="text-center mb-10 no-print hide-on-print">
             <p className="font-label text-[10px] tracking-widest text-brand mb-4">🃏 GENERADOR</p>
-            <h1 className="font-display text-4xl text-deep font-semibold mb-3">Flashcards</h1>
-            <p className="text-deep/70 max-w-md mx-auto">
+            <h1 className="font-display text-4xl text-deep font-semibold mb-3 dark:text-cream">Flashcards</h1>
+            <p className="text-deep/70 max-w-md mx-auto dark:text-cream/70">
               Crea tarjetas de estudio interactivas. Escribe el concepto de un lado y la definición del otro.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function Flashcards() {
                                 REVERSO (Respuesta/Definición)
                               </label>
                               <textarea
-                                className="w-full bg-white border-2 border-deep px-3 py-2 text-deep focus:outline-none focus:ring-2 focus:ring-sky/50 resize-none h-20 text-sm"
+                                className="w-full bg-white border-2 border-deep px-3 py-2 text-deep focus:outline-none focus:ring-2 focus:ring-sky/50 resize-none h-20 text-sm dark:text-cream dark:border-cream/40 dark:bg-deep"
                                 placeholder="Parte física de la computadora..."
                                 value={card.back}
                                 onChange={(e) => updateCard(card.id, 'back', e.target.value)}
@@ -165,7 +165,7 @@ export default function Flashcards() {
 
                     <button
                       onClick={addCard}
-                      className="w-full border-2 border-dashed border-deep/40 text-deep/60 py-3 font-semibold hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                      className="w-full border-2 border-dashed border-deep/40 text-deep/60 py-3 font-semibold hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/40 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                     >
                       + AGREGAR OTRA TARJETA
                     </button>

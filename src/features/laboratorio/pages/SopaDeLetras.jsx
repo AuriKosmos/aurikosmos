@@ -78,15 +78,15 @@ export default function SopaDeLetras() {
     : new Set()
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar backHref="#/laboratorio" backLabel="LABORATORIO" />
 
       <section className="pb-24">
        <PageContainer>
         <div className="text-center mb-10 no-print">
           <p className="font-label text-[10px] tracking-widest text-brand mb-4">🔤 GENERADOR</p>
-          <h1 className="font-display text-4xl text-deep font-semibold mb-3">Sopa de letras</h1>
-          <p className="text-deep/70 max-w-md mx-auto">
+          <h1 className="font-display text-4xl text-deep font-semibold mb-3 dark:text-cream">Sopa de letras</h1>
+          <p className="text-deep/70 max-w-md mx-auto dark:text-cream/70">
             Escribe las palabras, ajusta el formato de la hoja, y genera.
           </p>
         </div>
@@ -98,19 +98,19 @@ export default function SopaDeLetras() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 rows={8}
-                className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                 placeholder={'PERRO\nGATO\nLEON'}
               />
               <div className="flex gap-2 mt-2">
                 <button
                   onClick={handleLoadExample}
-                  className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                  className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                 >
                   Cargar ejemplo
                 </button>
                 <button
                   onClick={handleClear}
-                  className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                  className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                 >
                   Limpiar
                 </button>
@@ -122,7 +122,7 @@ export default function SopaDeLetras() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                 placeholder="Sopa de letras"
               />
             </PixelField>
@@ -143,7 +143,7 @@ export default function SopaDeLetras() {
                 type="text"
                 value={extraLabel}
                 onChange={(e) => setExtraLabel(e.target.value)}
-                className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                 placeholder="Campo extra (ej. Materia) — opcional"
               />
             </PixelField>

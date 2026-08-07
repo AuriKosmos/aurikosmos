@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply bg-white text-deep font-body antialiased;
+  @apply bg-white text-deep font-body antialiased dark:bg-deep dark:text-cream transition-colors duration-200;
 }
 
 /* Foco visible para accesibilidad de teclado */

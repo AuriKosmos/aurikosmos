@@ -12,7 +12,7 @@ export function PixelSelect({ label, value, onChange, options = [], placeholder,
   return (
     <div>
       {label && (
-        <label className="font-label text-[9px] tracking-wide text-deep/70 block mb-2">
+        <label className="font-label text-[9px] tracking-wide text-deep/70 dark:text-cream/70 block mb-2">
           {label}
         </label>
       )}
@@ -20,7 +20,7 @@ export function PixelSelect({ label, value, onChange, options = [], placeholder,
         <select
           value={value}
           onChange={onChange}
-          className={`w-full appearance-none border-2 border-deep p-2.5 pr-9 font-body text-sm text-deep bg-white focus:outline-none focus:border-brand ${className}`}
+          className={`w-full appearance-none border-2 border-deep p-2.5 pr-9 font-body text-sm text-deep bg-white focus:outline-none focus:border-brand dark:bg-deep dark:text-cream dark:border-cream/40 ${className}`}
         >
           {placeholder && (
             <option value="" disabled>
@@ -34,7 +34,7 @@ export function PixelSelect({ label, value, onChange, options = [], placeholder,
           ))}
         </select>
         <span
-          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-deep/60 text-xs"
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-deep/60 dark:text-cream/60 text-xs"
           aria-hidden="true"
         >
           ▼

@@ -23,14 +23,14 @@ function BlockCard({ block, index, total, tema, resources, onMove, onRemove, onC
   const suggestions = block.suggestionsOpen ? getSuggestions(block.type, tema, resources) : []
 
   return (
-    <div className="border-2 border-deep bg-white">
-      <div className="flex items-center gap-2 bg-deep/5 border-b-2 border-deep px-3 py-2">
+    <div className="border-2 border-deep bg-white dark:bg-deep dark:border-cream/40">
+      <div className="flex items-center gap-2 bg-deep/5 border-b-2 border-deep px-3 py-2 dark:bg-cream/5 dark:border-cream/30">
         <span className="text-lg" aria-hidden="true">{meta?.emoji}</span>
-        <span className="font-label text-[9px] tracking-widest text-deep/70 flex-1">{meta?.label}</span>
+        <span className="font-label text-[9px] tracking-widest text-deep/70 flex-1 dark:text-cream/70">{meta?.label}</span>
         <button
           onClick={() => onMove(block.id, -1)}
           disabled={index === 0}
-          className="w-6 h-6 flex items-center justify-center text-deep/50 hover:text-deep disabled:opacity-20 disabled:cursor-not-allowed"
+          className="w-6 h-6 flex items-center justify-center text-deep/50 hover:text-deep disabled:opacity-20 disabled:cursor-not-allowed dark:text-cream/50 dark:hover:text-cream"
           aria-label="Mover arriba"
         >
           ↑
@@ -38,14 +38,14 @@ function BlockCard({ block, index, total, tema, resources, onMove, onRemove, onC
         <button
           onClick={() => onMove(block.id, 1)}
           disabled={index === total - 1}
-          className="w-6 h-6 flex items-center justify-center text-deep/50 hover:text-deep disabled:opacity-20 disabled:cursor-not-allowed"
+          className="w-6 h-6 flex items-center justify-center text-deep/50 hover:text-deep disabled:opacity-20 disabled:cursor-not-allowed dark:text-cream/50 dark:hover:text-cream"
           aria-label="Mover abajo"
         >
           ↓
         </button>
         <button
           onClick={() => onRemove(block.id)}
-          className="w-6 h-6 flex items-center justify-center text-deep/40 hover:text-blossom"
+          className="w-6 h-6 flex items-center justify-center text-deep/40 hover:text-blossom dark:text-cream/40"
           aria-label="Eliminar bloque"
         >
           ✕
@@ -58,7 +58,7 @@ function BlockCard({ block, index, total, tema, resources, onMove, onRemove, onC
           onChange={(e) => onChangeContent(block.id, e.target.value)}
           rows={2}
           placeholder={`Escribe aquí, o pídele una idea a Auri →`}
-          className="w-full border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white resize-none"
+          className="w-full border-2 border-deep p-2 text-sm text-deep focus:outline-none focus:border-brand bg-white resize-none dark:text-cream dark:border-cream/40 dark:bg-deep"
         />
 
         <button
@@ -156,7 +156,7 @@ export default function ConstruyeMiClase() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar backHref="#/observatorio" backLabel="OBSERVATORIO" />
 
       <section className="pb-24">
@@ -184,7 +184,7 @@ export default function ConstruyeMiClase() {
                 value={tema}
                 onChange={(e) => setTema(e.target.value)}
                 placeholder="ej. el sistema solar"
-                className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
               />
             </PixelField>
 
@@ -208,10 +208,10 @@ export default function ConstruyeMiClase() {
                   <button
                     key={b.id}
                     onClick={() => addBlock(b.id)}
-                    className="flex flex-col items-center gap-1 border-2 border-deep bg-white p-2.5 hover:bg-sky/20 hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
+                    className="flex flex-col items-center gap-1 border-2 border-deep bg-white p-2.5 hover:bg-sky/20 hover:translate-x-[1px] hover:translate-y-[1px] transition-all dark:bg-deep dark:border-cream/40 dark:hover:bg-cream/10"
                   >
                     <span className="text-lg" aria-hidden="true">{b.emoji}</span>
-                    <span className="text-[10px] text-deep/70 leading-tight text-center">{b.label}</span>
+                    <span className="text-[10px] text-deep/70 leading-tight text-center dark:text-cream/70">{b.label}</span>
                   </button>
                 ))}
               </div>

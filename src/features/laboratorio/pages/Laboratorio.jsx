@@ -1,4 +1,4 @@
-import { Navbar, Footer, PageContainer } from '../../../components/layout'
+import { Navbar, Footer, PageContainer, PlanetEnter } from '../../../components/layout'
 
 const MACHINES = [
   { id: 'sopa-de-letras', label: 'Sopa de letras', emoji: '🔤', active: true },
@@ -8,8 +8,8 @@ const MACHINES = [
   { id: 'diplomas', label: 'Diplomas', emoji: '🎓', active: true },
   { id: 'certificados', label: 'Certificados', emoji: '📜', active: true },
   { id: 'horarios', label: 'Horarios', emoji: '🗓️', active: true },
-  { id: 'rubricas', label: 'Rúbricas', emoji: '📊', active: false },
-  { id: 'planificaciones', label: 'Planificaciones', emoji: '🗂️', active: false },
+  { id: 'rubricas', label: 'Rúbricas', emoji: '📊', active: true },
+  { id: 'planificaciones', label: 'Planificaciones', emoji: '🗂️', active: true },
   { id: 'calendarios', label: 'Calendarios', emoji: '📅', active: false },
   { id: 'ruleta', label: 'Ruleta', emoji: '🎡', active: false },
   { id: 'dados', label: 'Dados', emoji: '🎲', active: true },
@@ -20,14 +20,14 @@ function MachineCard({ machine }) {
     return (
       <a
         href={`#/laboratorio/${machine.id}`}
-        className="group relative bg-white border-2 border-deep p-5 shadow-pixel hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-pixel-sm transition-all flex flex-col items-center text-center focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/50"
+        className="group relative bg-white border-2 border-deep p-5 shadow-pixel hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-pixel-sm transition-all flex flex-col items-center text-center focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/50 dark:bg-deep dark:border-cream/40 dark:shadow-none"
       >
         {/* Lucita verde parpadeante de "máquina encendida" */}
         <span className="absolute top-3 right-3 w-2 h-2 bg-mint animate-pulse" aria-hidden="true" />
         
         <span className="text-4xl mb-3">{machine.emoji}</span>
-        <h3 className="font-display font-semibold text-deep mb-2">{machine.label}</h3>
-        <span className="font-label text-[9px] tracking-wide bg-mint/30 border border-deep px-2 py-1 text-deep">
+        <h3 className="font-display font-semibold text-deep mb-2 dark:text-cream">{machine.label}</h3>
+        <span className="font-label text-[9px] tracking-wide bg-mint/30 border border-deep px-2 py-1 text-deep dark:border-cream/40 dark:text-cream">
           DISPONIBLE
         </span>
       </a>
@@ -35,10 +35,10 @@ function MachineCard({ machine }) {
   }
 
   return (
-    <div className="bg-white/60 border-2 border-dashed border-deep/20 p-5 flex flex-col items-center text-center opacity-60 cursor-not-allowed">
+    <div className="bg-white/60 border-2 border-dashed border-deep/20 p-5 flex flex-col items-center text-center opacity-60 cursor-not-allowed dark:bg-white/5 dark:border-cream/20">
       <span className="text-4xl mb-3 grayscale">{machine.emoji}</span>
-      <h3 className="font-display font-semibold text-deep/60 mb-2">{machine.label}</h3>
-      <span className="font-label text-[9px] tracking-wide bg-deep/10 border border-deep/30 px-2 py-1 text-deep/50">
+      <h3 className="font-display font-semibold text-deep/60 mb-2 dark:text-cream/50">{machine.label}</h3>
+      <span className="font-label text-[9px] tracking-wide bg-deep/10 border border-deep/30 px-2 py-1 text-deep/50 dark:bg-cream/5 dark:border-cream/20 dark:text-cream/40">
         🔒 PRÓXIMAMENTE
       </span>
     </div>
@@ -47,16 +47,17 @@ function MachineCard({ machine }) {
 
 export default function Laboratorio() {
   return (
-    <div className="min-h-screen bg-white">
+    <PlanetEnter>
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar backHref="#/" backLabel="INICIO" />
 
       <section className="pt-6 pb-16 text-center">
         <PageContainer>
           <p className="font-label text-[10px] tracking-widest text-brand mb-5">🧩 PLANETA 2</p>
-          <h1 className="font-display text-4xl sm:text-5xl text-deep font-semibold mb-4">
+          <h1 className="font-display text-4xl sm:text-5xl text-deep font-semibold mb-4 dark:text-cream">
             Laboratorio
           </h1>
-          <p className="text-deep/70 max-w-lg mx-auto">
+          <p className="text-deep/70 max-w-lg mx-auto dark:text-cream/70">
             Aquí no hay botones. Hay máquinas. Cada una genera algo distinto para tu próxima clase —
             ya tenemos varias encendidas. Las demás llegarán en las próximas fases.
           </p>
@@ -75,5 +76,6 @@ export default function Laboratorio() {
 
       <Footer />
     </div>
+    </PlanetEnter>
   )
 }

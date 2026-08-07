@@ -359,7 +359,7 @@ export default function Certificados() {
   })
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-deep">
       {/* Igual que en Diplomas: horizontal solo mientras esta página está montada.
           IMPORTANTE: usamos "297mm 210mm" (A4 explícito) en vez de la palabra
           clave "landscape". Muchos drivers de impresoras físicas (Epson, HP, etc.)
@@ -417,8 +417,8 @@ export default function Certificados() {
         <PageContainer>
           <div className="text-center mb-8 sm:mb-10 no-print px-2">
             <p className="font-label text-[10px] tracking-widest text-brand mb-4">📜 GENERADOR</p>
-            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3">Certificados</h1>
-            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base">
+            <h1 className="font-display text-3xl sm:text-4xl text-deep font-semibold mb-3 dark:text-cream">Certificados</h1>
+            <p className="text-deep/70 max-w-md mx-auto text-sm sm:text-base dark:text-cream/70">
               Para talleres, cursos o capacitaciones — con curso, horas y un código de
               verificación por estudiante.
             </p>
@@ -434,19 +434,19 @@ export default function Certificados() {
                   value={namesInput}
                   onChange={(e) => setNamesInput(e.target.value)}
                   rows={6}
-                  className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                  className="w-full border-2 border-deep p-3 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                   placeholder={'María José Andrade\nCarlos Mendoza'}
                 />
                 <div className="flex gap-2 mt-2">
                   <button
                     onClick={handleLoadExample}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Cargar ejemplo
                   </button>
                   <button
                     onClick={handleClear}
-                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                    className="flex-1 text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                   >
                     Limpiar
                   </button>
@@ -477,7 +477,7 @@ export default function Certificados() {
                     type="text"
                     value={courseName}
                     onChange={(e) => setCourseName(e.target.value)}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder="Ej. Uso de IA en el aula"
                   />
                 </PixelField>
@@ -487,7 +487,7 @@ export default function Certificados() {
                     type="text"
                     value={hours}
                     onChange={(e) => setHours(e.target.value)}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder="Ej. 20"
                     inputMode="numeric"
                   />
@@ -501,7 +501,7 @@ export default function Certificados() {
                     value={customBody}
                     onChange={(e) => setCustomBody(e.target.value)}
                     rows={3}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand resize-none bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder={`${typeCfg.verb} "${courseName || 'el curso indicado'}"${hours ? `, con una duración de ${hours} horas académicas` : ''}.`}
                   />
                 </PixelField>
@@ -515,7 +515,7 @@ export default function Certificados() {
                       type="text"
                       value={codePrefix}
                       onChange={(e) => setCodePrefix(e.target.value)}
-                      className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      className="mt-3 w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       placeholder="Prefijo, ej. AK"
                       maxLength={8}
                     />
@@ -535,7 +535,7 @@ export default function Certificados() {
                           type="text"
                           value={line.text}
                           onChange={(e) => updateHeaderLine(line.id, e.target.value)}
-                          className="flex-1 border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="flex-1 border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder={
                             i === 0
                               ? 'Ej. Universidad Central del Ecuador'
@@ -558,7 +558,7 @@ export default function Certificados() {
                       <button
                         type="button"
                         onClick={addHeaderLine}
-                        className="w-full text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none"
+                        className="w-full text-xs font-medium text-deep/60 border-2 border-dashed border-deep/30 py-1.5 hover:border-deep hover:text-deep hover:bg-white transition-colors focus:outline-none dark:text-cream/60 dark:border-cream/30 dark:hover:bg-cream/10 dark:hover:border-cream dark:hover:text-cream"
                       >
                         + Agregar línea
                       </button>
@@ -585,14 +585,14 @@ export default function Certificados() {
                       type="text"
                       value={signer1Name}
                       onChange={(e) => setSigner1Name(e.target.value)}
-                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       placeholder="Nombre"
                     />
                     <input
                       type="text"
                       value={signer1Role}
                       onChange={(e) => setSigner1Role(e.target.value)}
-                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                      className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                       placeholder="Cargo"
                     />
                   </div>
@@ -619,14 +619,14 @@ export default function Certificados() {
                           type="text"
                           value={signer2Name}
                           onChange={(e) => setSigner2Name(e.target.value)}
-                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder="Nombre"
                         />
                         <input
                           type="text"
                           value={signer2Role}
                           onChange={(e) => setSigner2Role(e.target.value)}
-                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                          className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                           placeholder="Cargo"
                         />
                       </div>
@@ -655,7 +655,7 @@ export default function Certificados() {
                     type="text"
                     value={dateLabel}
                     onChange={(e) => setDateLabel(e.target.value)}
-                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white"
+                    className="w-full border-2 border-deep p-2.5 font-body text-sm text-deep focus:outline-none focus:border-brand bg-white dark:text-cream dark:border-cream/40 dark:bg-deep"
                     placeholder="Ej. Quito, agosto de 2026"
                   />
                 </PixelField>
@@ -706,7 +706,7 @@ export default function Certificados() {
                       <button
                         onClick={() => setPreviewIndex((i) => Math.max(0, i - 1))}
                         disabled={previewIndex === 0}
-                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
+                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream dark:text-cream dark:border-cream/40 dark:bg-deep dark:hover:bg-cream/10"
                         aria-label="Certificado anterior"
                       >
                         ◀
@@ -717,7 +717,7 @@ export default function Certificados() {
                       <button
                         onClick={() => setPreviewIndex((i) => Math.min(names.length - 1, i + 1))}
                         disabled={previewIndex === names.length - 1}
-                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream"
+                        className="w-8 h-8 border-2 border-deep bg-white text-deep disabled:opacity-30 hover:bg-cream dark:text-cream dark:border-cream/40 dark:bg-deep dark:hover:bg-cream/10"
                         aria-label="Certificado siguiente"
                       >
                         ▶

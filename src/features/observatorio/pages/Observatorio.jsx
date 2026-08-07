@@ -1,4 +1,4 @@
-import { Navbar, Footer, PageContainer } from '../../../components/layout'
+import { Navbar, Footer, PageContainer, PlanetEnter } from '../../../components/layout'
 import { SECTIONS } from '../../../config/sections.js'
 
 // Misma fuente que alimenta el menú ☰ (ver src/config/sections.js) — evita que
@@ -52,7 +52,8 @@ function IdeaCard({ idea }) {
 
 export default function Observatorio() {
   return (
-    <div className="min-h-screen bg-white">
+    <PlanetEnter>
+    <div className="min-h-screen bg-white dark:bg-deep">
       <Navbar backHref="#/" backLabel="INICIO" />
 
       {/* Hero nocturno — contraste con el Laboratorio, que se siente "de día" */}
@@ -84,5 +85,6 @@ export default function Observatorio() {
 
       <Footer />
     </div>
+    </PlanetEnter>
   )
 }

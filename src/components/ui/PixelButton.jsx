@@ -9,9 +9,9 @@ export function PixelButton({ variant = 'primary', href, className = '', childre
   // Restauramos tus sombras (shadow-pixel y shadow-pixel-sm) con el movimiento exacto de 2px
   const styles = {
     primary: 'bg-brand text-white shadow-pixel hover:shadow-pixel-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px]',
-    secondary: 'bg-white text-deep shadow-pixel-sm hover:shadow-none hover:bg-cream active:translate-x-[2px] active:translate-y-[2px]',
+    secondary: 'bg-white text-deep shadow-pixel-sm hover:shadow-none hover:bg-cream active:translate-x-[2px] active:translate-y-[2px] dark:bg-deep dark:text-cream dark:border-cream/40 dark:hover:bg-cream/10',
     accent: 'bg-ember text-white shadow-pixel hover:shadow-pixel-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px]',
-    ghost: 'bg-transparent text-deep border-dashed border-deep/40 hover:border-solid hover:border-deep hover:bg-white shadow-none active:bg-deep/5',
+    ghost: 'bg-transparent text-deep border-dashed border-deep/40 hover:border-solid hover:border-deep hover:bg-white shadow-none active:bg-deep/5 dark:text-cream dark:border-cream/30 dark:hover:border-cream dark:hover:bg-cream/10 dark:active:bg-cream/5',
   }
 
   const classes = `${baseStyles} ${styles[variant]} ${className}`
