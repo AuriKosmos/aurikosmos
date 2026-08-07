@@ -87,7 +87,12 @@ export function Footer({ className = '' }) {
         
         {/* LOGO Y NOMBRE */}
         <div className="flex items-center gap-2">
-          <IconBrandPlanet className="w-7 h-7 text-white" aria-hidden="true" />
+          <img
+            src="./auri-cara.png"
+            alt=""
+            aria-hidden="true"
+            className="w-7 h-7"
+          />
           <span className="font-display font-semibold text-xl text-white">Auri Kosmos</span>
         </div>
 

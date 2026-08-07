@@ -319,7 +319,12 @@ export function Navbar({ backHref, backLabel = 'VOLVER', menu, badge, className 
         
         {/* LOGO */}
         <a href="#/" className="flex items-center gap-2 group">
-          <IconBrandPlanet className="w-7 h-7 text-deep group-hover:rotate-12 transition-transform" aria-hidden="true" />
+          <img
+            src="./auri-cara.png"
+            alt=""
+            aria-hidden="true"
+            className="w-7 h-7 group-hover:rotate-12 transition-transform"
+          />
           <span className="font-display font-semibold text-xl text-deep">Auri Kosmos</span>
         </a>
 
